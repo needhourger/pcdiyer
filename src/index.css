@@ -38,4 +38,6 @@ html.dark {
   position: relative;
   color: white;
   font-family: 'Jersey 10';
+/* Element-plus custom */
+  --el-border-radius-base: 12px;
 }

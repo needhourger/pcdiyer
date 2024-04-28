@@ -3,23 +3,39 @@
     <el-collapse>
       <el-collapse-item>
         <template #title>
-          <h1 class="text-2xl flex text-center items-center">
-            <el-icon class="mr-1"><Menu/></el-icon>
+          <h1 class="title">
+            <el-icon class="mr-2"><Menu/></el-icon>
             Mother Board
           </h1>
         </template>
         <MotherBoard/>
+      </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
+            <el-icon class="mr-2"><Cpu/></el-icon>
+            CPU(Central Processing Unit)
+          </h1>
+        </template>
+        <CPUForm/>
       </el-collapse-item>
     </el-collapse>
   </div>
 </template>
 <script setup>
 import MotherBoard from '../components/MotherBoard.vue';
-import { Menu } from "@element-plus/icons-vue"
+import { Menu, Cpu } from "@element-plus/icons-vue"
 </script>
 <style lang="less" scoped>
 .el-collapse {
   --el-collapse-content-font-size: 1.4rem;
   --el-collapse-header-height: 80px;
+}
+.title {
+  display: flex;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  align-items: center;
+  text-align: center;
 }
 </style>
