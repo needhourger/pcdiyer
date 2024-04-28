@@ -19,12 +19,22 @@
         </template>
         <CPUForm/>
       </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
+            <el-icon class="mr-2"><Platform/></el-icon>
+            GPU(Graphics Processing Unit)
+          </h1>
+        </template>
+        <GPUForm/>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>
 <script setup>
+import GPUForm from '../components/GPUForm.vue';
 import MotherBoard from '../components/MotherBoard.vue';
-import { Menu, Cpu } from "@element-plus/icons-vue"
+import { Menu, Cpu, Platform } from "@element-plus/icons-vue"
 </script>
 <style lang="less" scoped>
 .el-collapse {

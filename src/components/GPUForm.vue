@@ -1,14 +1,13 @@
 <template>
   <div class="w-full p-5">
-    <BaseForm v-model="cpuForm" :formLabels="formLabels"/>
+    <BaseForm v-model="gpuForm" :formLabels="formLabels"/>
   </div>
 </template>
 <script setup>
 import { reactive } from 'vue';
 import BaseForm from './BaseForm.vue';
-const cpuForm = reactive({
-  cpuType: '',
-  socket: '',
+const gpuForm = reactive({
+  gpuType: '',
   generation: '',
   model: '',
   link: '',
@@ -17,38 +16,32 @@ const cpuForm = reactive({
 })
 const formLabels = [
   {
-    label: 'CPU Type', prop: 'cpuType', type: 'select',
+    label: 'GPU Type', prop: 'gpuType', type: 'select',
     class: 'w-1/4',
     options: [
-      "AMD", "Intel", "Other"
+      "AMD","NVIDIA","Intel","Other"
     ],
-    placeholder: "CPU Manufacturer"
-  },
-  {
-    label: 'Socket', prop: 'socket', type: 'select',
-    class: 'w-1/4',
-    options: [],
-    placeholder: 'Socket Type'
+    placeholder: "GPU Manufacturer"
   },
   {
     label: 'Generation', prop: 'generation', type: 'select',
     class: 'w-1/4',
     options: [],
-    placeholder: 'CPU Generation'
+    placeholder: 'GPU Generation'
   },
   {
     label: 'Model', prop: 'model', type: 'input',
     class: 'w-1/2',
-    placeholder: 'CPU Model Number'
+    placeholder: 'GPU Model Number'
   },
   {
     label: 'Link', prop: 'link', type: 'input',
-    class: 'w-1/3',
+    class: 'w-5/6',
     placeholder: 'Online Shopping Product URL',
   },
   {
     label: 'Price', prop: 'price', type: 'number',
-    class: 'w-1/6',
+    class: 'w-1/6 ml-auto',
   },
   {
     label: 'Remark', prop: 'remark', type: 'input',
