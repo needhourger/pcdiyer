@@ -6,13 +6,15 @@
         <el-select v-if="item.type === 'select'" filterable allow-create v-model="mbForm[`${item.prop}`]" :placeholder="item.placeholder">
           <el-option v-for="option, index in item.options" :key="index" :label="option" :value="option"></el-option>
         </el-select>
-        <el-input v-if="item.type === 'input'" :placeholder="item.placeholder"></el-input>
+        <el-input v-if="item.type === 'input'" :placeholder="item.placeholder" v-model="mbForm[`${item.prop}`]"></el-input>
+        <el-input v-if="item.type ==='number'" v-model.number="mbForm[`${item.prop}`]" :prefix-icon="Money"></el-input>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script setup>
 import { reactive } from 'vue';
+import { Money } from "@element-plus/icons-vue"
 
 const mbForm = reactive({
   cpuType: '',
@@ -45,7 +47,8 @@ const formLabels = [
   },
   { label: 'Chipset', prop: 'chipset', type: 'select', class: 'w-1/4', options: [], placeholder: "Motherboard Chipset" },
   { label: 'Model', prop: 'model', type: 'input', class: 'w-1/2', placeholder: "Motherboard Detail Model " },
-  { label: 'Link', prop: 'link', type: 'input', class: 'w-1/2', placeholder: "Online Shopping Product url" },
+  { label: 'Link', prop: 'link', type: 'input', class: 'w-1/3', placeholder: "Online Shopping Product url" },
+  { label: 'Price', prop: 'price', type: 'number', class: 'w-1/6'},
   { label: 'Remark', prop: 'remark', type: 'input', class: 'w-full', placeholder: "Remark" }
 ]
 </script>
