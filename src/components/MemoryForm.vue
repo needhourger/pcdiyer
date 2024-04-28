@@ -1,15 +1,17 @@
+
 <template>
   <div class="w-full p-5">
-    <BaseForm v-model="gpuForm" :formLabels="formLabels"/>
+    <BaseForm v-model="memoryForm" :formLabels="formLabels"/>
   </div>
 </template>
 <script setup>
-import { Money } from "@element-plus/icons-vue"
 import { reactive } from 'vue';
+import { Money } from "@element-plus/icons-vue"
 import BaseForm from './BaseForm.vue';
-const gpuForm = reactive({
-  gpuType: '',
+const memoryForm = reactive({
   generation: '',
+  speed: '',
+  capacity: 0,
   model: '',
   link: '',
   price: 0,
@@ -17,32 +19,33 @@ const gpuForm = reactive({
 })
 const formLabels = [
   {
-    label: 'GPU Type', prop: 'gpuType', type: 'select',
-    class: 'w-1/4',
-    options: [
-      "AMD","NVIDIA","Intel","Other"
-    ],
-    placeholder: "GPU Manufacturer"
-  },
-  {
     label: 'Generation', prop: 'generation', type: 'select',
     class: 'w-1/4',
+    options: ["DDR2","DDR3","DDR4","DDR5"],
+    placeholder: 'Memory Generation'
+  },
+  {
+    label: 'Speed', prop: 'speed', type: 'select',
+    class: 'w-1/4',
     options: [],
-    placeholder: 'GPU Generation'
+    placeholder: 'Memory Frequency'
+  },
+  {
+    label: 'Capacity', prop: 'capacity', type: 'number', suffixIcon: 'MHz'
   },
   {
     label: 'Model', prop: 'model', type: 'input',
     class: 'w-1/2',
-    placeholder: 'GPU Model Number'
+    placeholder: 'Memory Model Number'
   },
   {
     label: 'Link', prop: 'link', type: 'input',
-    class: 'w-5/6',
+    class: 'w-1/3',
     placeholder: 'Online Shopping Product URL',
   },
   {
     label: 'Price', prop: 'price', type: 'number',
-    class: 'w-1/6', prefixIcon: Money
+    class: 'w-1/6 ml-auto', prefixIcon: Money
   },
   {
     label: 'Remark', prop: 'remark', type: 'input',

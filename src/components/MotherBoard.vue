@@ -5,6 +5,7 @@
 </template>
 <script setup>
 import { reactive } from 'vue';
+import { Money } from "@element-plus/icons-vue"
 import BaseForm from './BaseForm.vue';
 
 const mbForm = reactive({
@@ -40,7 +41,7 @@ const formLabels = [
   { label: 'Chipset', prop: 'chipset', type: 'select', class: 'w-1/4', options: [], placeholder: "Motherboard Chipset" },
   { label: 'Model', prop: 'model', type: 'input', class: 'w-1/2', placeholder: "Motherboard Detail Model " },
   { label: 'Link', prop: 'link', type: 'input', class: 'w-1/3', placeholder: "Online Shopping Product url" },
-  { label: 'Price', prop: 'price', type: 'number', class: 'w-1/6'},
+  { label: 'Price', prop: 'price', type: 'number', class: 'w-1/6', prefixIcon: Money},
   { label: 'Remark', prop: 'remark', type: 'input', class: 'w-full', placeholder: "Remark" }
 ]
 </script>

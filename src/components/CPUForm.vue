@@ -5,6 +5,7 @@
 </template>
 <script setup>
 import { reactive } from 'vue';
+import { Money } from "@element-plus/icons-vue"
 import BaseForm from './BaseForm.vue';
 const cpuForm = reactive({
   cpuType: '',
@@ -48,7 +49,7 @@ const formLabels = [
   },
   {
     label: 'Price', prop: 'price', type: 'number',
-    class: 'w-1/6',
+    class: 'w-1/6', prefixIcon: Money
   },
   {
     label: 'Remark', prop: 'remark', type: 'input',

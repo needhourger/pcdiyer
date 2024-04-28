@@ -6,14 +6,13 @@
         <el-select v-if="item.type === 'select'" filterable allow-create v-model="form[`${item.prop}`]" :placeholder="item.placeholder">
           <el-option v-for="option, index in item.options" :key="index" :label="option" :value="option"></el-option>
         </el-select>
-        <el-input v-if="item.type === 'input'" :placeholder="item.placeholder" v-model="form[`${item.prop}`]"></el-input>
-        <el-input v-if="item.type ==='number'" v-model.number="form[`${item.prop}`]" :prefix-icon="Money"></el-input>
+        <el-input v-if="item.type === 'input'" :placeholder="item.placeholder" v-model="form[`${item.prop}`]" :prefix-icon="item.prefixIcon" :suffix-icon="item.suffixIcon"></el-input>
+        <el-input v-if="item.type ==='number'" v-model.number="form[`${item.prop}`]" :prefix-icon="item.prefixIcon" :suffix-icon="item.suffixIcon"></el-input>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script setup>
-import { Money } from "@element-plus/icons-vue"
 defineProps({
   formLabels: { type: Array, default: () => ([])}
 })
@@ -24,7 +23,7 @@ const form = defineModel()
   margin: 0;
   margin-bottom: 0.5rem;
   padding: 0 0.5rem;
-  --el-form-label-font-size: 1.4rem;
+  --el-form-label-font-size: 1.6rem;
   --el-text-color-regular: #fff;
 }
 .el-select {

@@ -22,6 +22,15 @@
       <el-collapse-item>
         <template #title>
           <h1 class="title">
+            <el-icon class="mr-2"><Ticket/></el-icon>
+            Memory
+          </h1>
+        </template>
+        <MemoryForm/>
+      </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
             <el-icon class="mr-2"><Platform/></el-icon>
             GPU(Graphics Processing Unit)
           </h1>
@@ -33,8 +42,9 @@
 </template>
 <script setup>
 import GPUForm from '../components/GPUForm.vue';
+import MemoryForm from '../components/MemoryForm.vue';
 import MotherBoard from '../components/MotherBoard.vue';
-import { Menu, Cpu, Platform } from "@element-plus/icons-vue"
+import { Menu, Cpu, Platform, Ticket } from "@element-plus/icons-vue"
 </script>
 <style lang="less" scoped>
 .el-collapse {
