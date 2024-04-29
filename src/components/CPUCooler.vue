@@ -6,16 +6,8 @@
 </template>
 <script setup>
 import { Money } from "@element-plus/icons-vue"
-import { reactive } from 'vue';
 import BaseForm from './BaseForm.vue';
-const cpuCoolerForm = reactive({
-  type: '',
-  size: '',
-  model: '',
-  link: '',
-  price: 0,
-  remark: '',
-})
+const cpuCoolerForm = defineModel()
 const formLabels = [
   {
     label: 'Cooler Type', prop: 'type', type: 'select',
@@ -51,8 +43,12 @@ const formLabels = [
   },
   {
     label: 'Remark', prop: 'remark', type: 'input',
-    class: 'w-full',
+    class: 'w-5/6',
     placeholder: 'Remark'
+  },
+  {
+    label: 'Count', prop: 'count', type: 'count',
+    class: 'w-1/6',
   }
 ]
 </script>

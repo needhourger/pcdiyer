@@ -25,6 +25,7 @@
             <span>{{ item.suffix }}</span>
           </template>
         </el-input>
+        <el-input-number v-if="item.type==='count'" v-model.number="form[`${item.prop}`]"></el-input-number>
       </el-form-item>
     </el-form>
   </div>

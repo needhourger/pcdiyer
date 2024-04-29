@@ -5,18 +5,9 @@
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue';
 import { Money } from "@element-plus/icons-vue"
 import BaseForm from './BaseForm.vue';
-const memoryForm = reactive({
-  generation: '',
-  speed: '',
-  capacity: 0,
-  model: '',
-  link: '',
-  price: 0,
-  remark: '',
-})
+const memoryForm = defineModel()
 const formLabels = [
   {
     label: 'Generation', prop: 'generation', type: 'select',
@@ -46,11 +37,14 @@ const formLabels = [
     class: 'w-1/2',
     placeholder: 'Online Shopping Product URL',
   },
-
   {
     label: 'Remark', prop: 'remark', type: 'input',
-    class: 'w-full',
+    class: 'w-5/6',
     placeholder: 'Remark'
+  },
+  {
+    label: 'count', prop: 'count', type: 'count',
+    class: 'w-1/6'
   }
 ]
 </script>

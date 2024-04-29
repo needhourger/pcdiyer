@@ -8,7 +8,7 @@
             Mother Board
           </h1>
         </template>
-        <MotherBoard/>
+        <MotherBoard v-model="diyForm.motherBoard"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -20,7 +20,7 @@
             </el-button>
           </h1>
         </template>
-        <CPUForm/>
+        <CPUForm v-model="diyForm.cpus[i]" v-for="cpu,i in diyForm.cpus" :key="i"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -32,7 +32,7 @@
             </el-button>
           </h1>
         </template>
-        <MemoryForm/>
+        <MemoryForm v-model="diyForm.memorys[i]" v-for="memory,i in diyForm.memorys" :key="i"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -44,7 +44,7 @@
             </el-button>
           </h1>
         </template>
-        <GPUForm/>
+        <GPUForm v-model="diyForm.gpus[i]" v-for="gpu,i in diyForm.gpus" :key="i"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -56,7 +56,7 @@
             </el-button>
           </h1>
         </template>
-        <StorageForm/>
+        <StorageForm v-model="diyForm.storages[i]" v-for="storage,i in diyForm.storages" :key="i"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -68,7 +68,7 @@
             </el-button>
           </h1>
         </template>
-        <CPUCooler/>
+        <CPUCooler v-model="diyForm.cpuCoolers[i]" v-for="cooler,i in diyForm.cpuCoolers" :key="i"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -80,7 +80,7 @@
             </el-button>
           </h1>
         </template>
-        <PowerForm/>
+        <PowerForm v-model="diyForm.powers[i]" v-for="power,i in diyForm.powers" :key="i"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -89,7 +89,7 @@
             Computer Case
           </h1>
         </template>
-        <ComputerCase/>
+        <ComputerCase v-model="diyForm.case"/>
       </el-collapse-item>
     </el-collapse>
   </div>
@@ -103,6 +103,7 @@ import StorageForm from '../components/StorageForm.vue';
 import CPUCooler from '../components/CPUCooler.vue';
 import PowerForm from "../components/PowerForm.vue";
 import ComputerCase from "../components/ComputerCase.vue"
+import { diyForm } from '../utils/useForm.js'
 </script>
 <style lang="less" scoped>
 .el-collapse {

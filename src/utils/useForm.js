@@ -1,4 +1,4 @@
-const { reactive } = require("vue")
+import { reactive } from "vue"
 
 const motherboardForm = reactive({
   cpuType: '',
@@ -9,6 +9,7 @@ const motherboardForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const cpuForm = reactive({
   cpuType: '',
@@ -18,6 +19,7 @@ const cpuForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const memoryForm = reactive({
   generation: '',
@@ -27,6 +29,7 @@ const memoryForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const gpuForm = reactive({
   gpuType: '',
@@ -35,6 +38,7 @@ const gpuForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const storageForm = reactive({
   type: '',
@@ -46,6 +50,7 @@ const storageForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const powerForm = reactive({
   size: '',
@@ -55,6 +60,7 @@ const powerForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const caseForm = reactive({
   size: '',
@@ -62,13 +68,23 @@ const caseForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
 })
 const otherForm = reactive({
   name: '',
   model: '',
   link: '',
   price: 0,
-  remark: ''
+  remark: '',
+  num: 1,
+})
+const cpuCoolerForm = reactive({
+  type: '',
+  size: '',
+  model: '',
+  link: '',
+  price: 0,
+  remark: '',
 })
 const diyForm = reactive({
   motherBoard: motherboardForm,
@@ -76,15 +92,18 @@ const diyForm = reactive({
   memorys: [memoryForm],
   gpus: [gpuForm],
   storages: [storageForm],
+  cpuCoolers: [cpuCoolerForm],
   powers: [powerForm],
-  caseForm: caseForm,
+  case: caseForm,
   others: [],
 })
+
 export {
   motherboardForm,
   cpuForm,
   memoryForm,
   gpuForm,
+  cpuCoolerForm,
   storageForm,
   powerForm,
   caseForm,

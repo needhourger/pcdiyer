@@ -5,16 +5,8 @@
 </template>
 <script setup>
 import { Money } from "@element-plus/icons-vue"
-import { reactive } from 'vue';
 import BaseForm from './BaseForm.vue';
-const gpuForm = reactive({
-  gpuType: '',
-  generation: '',
-  model: '',
-  link: '',
-  price: 0,
-  remark: '',
-})
+const gpuForm = defineModel()
 const formLabels = [
   {
     label: 'GPU Type', prop: 'gpuType', type: 'select',
@@ -46,8 +38,12 @@ const formLabels = [
   },
   {
     label: 'Remark', prop: 'remark', type: 'input',
-    class: 'w-full',
+    class: 'w-5/6',
     placeholder: 'Remark'
+  },
+  {
+    label: 'Count', prop: 'count', type: 'count',
+    class: 'w-1/6'
   }
 ]
 </script>

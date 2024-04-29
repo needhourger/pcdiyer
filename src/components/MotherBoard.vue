@@ -8,16 +8,7 @@ import { reactive } from 'vue';
 import { Money } from "@element-plus/icons-vue"
 import BaseForm from './BaseForm.vue';
 
-const mbForm = reactive({
-  cpuType: '',
-  socket: '',
-  formFactor: '',
-  chipset: '',
-  model: '',
-  link: '',
-  price: 0,
-  remark: '',
-})
+const mbForm = defineModel()
 const formLabels = [
   {
     label: 'CPU Type', prop: 'cpuType', type: 'select', class: 'w-1/4',

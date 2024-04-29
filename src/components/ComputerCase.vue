@@ -5,15 +5,9 @@
 </template>
 <script setup>
 import { Money } from "@element-plus/icons-vue"
-import { reactive } from 'vue';
 import BaseForm from './BaseForm.vue';
-const caseForm = reactive({
-  size: '',
-  model: '',
-  link: '',
-  price: 0,
-  remark: '',
-})
+const caseForm = defineModel()
+
 const formLabels = [
   {
     label: 'Size', prop: 'size', type: 'select',
@@ -48,8 +42,12 @@ const formLabels = [
   },
   {
     label: 'Remark', prop: 'remark', type: 'input',
-    class: 'w-full',
+    class: 'w-5/6',
     placeholder: 'Remark'
+  },
+  {
+    label: 'Count', prop: 'num', type: 'count',
+    class: 'w-1/6',
   }
 ]
 </script>
