@@ -34,7 +34,7 @@ const formLabels = [
   {
     label: 'Form Factor', prop: 'formFactor', type: 'select', class: 'w-1/4',
     options: [
-      "ATX", "Micro-ATX(mATX)", " Mini-ITX(ITX)", "Other"
+      "E-ATX", "ATX", "Micro-ATX(mATX)", " Mini-ITX(ITX)", "Other"
     ],
     placeholder: "MotherBoard Form Factor"
   },

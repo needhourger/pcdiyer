@@ -46,6 +46,33 @@
         </template>
         <StorageForm/>
       </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
+            <el-icon class="mr-2"><Orange/></el-icon>
+            CPU Cooler
+          </h1>
+        </template>
+        <CPUCooler/>
+      </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
+            <el-icon class="mr-2"><Stopwatch/></el-icon>
+            Power Supply
+          </h1>
+        </template>
+        <PowerForm/>
+      </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
+            <el-icon class="mr-2"><Box/></el-icon>
+            Computer Case
+          </h1>
+        </template>
+        <ComputerCase/>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>
@@ -53,8 +80,11 @@
 import GPUForm from '../components/GPUForm.vue';
 import MemoryForm from '../components/MemoryForm.vue';
 import MotherBoard from '../components/MotherBoard.vue';
-import { Menu, Cpu, Platform, Ticket, HelpFilled } from "@element-plus/icons-vue"
+import { Menu, Cpu, Platform, Ticket, HelpFilled, Orange, Stopwatch, Box } from "@element-plus/icons-vue"
 import StorageForm from '../components/StorageForm.vue';
+import CPUCooler from '../components/CPUCooler.vue';
+import PowerForm from "../components/PowerForm.vue";
+import ComputerCase from "../components/ComputerCase.vue"
 </script>
 <style lang="less" scoped>
 .el-collapse {
