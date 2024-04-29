@@ -37,6 +37,15 @@
         </template>
         <GPUForm/>
       </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
+            <el-icon class="mr-2"><HelpFilled/></el-icon>
+            Storage Drive
+          </h1>
+        </template>
+        <StorageForm/>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>
@@ -44,7 +53,8 @@
 import GPUForm from '../components/GPUForm.vue';
 import MemoryForm from '../components/MemoryForm.vue';
 import MotherBoard from '../components/MotherBoard.vue';
-import { Menu, Cpu, Platform, Ticket } from "@element-plus/icons-vue"
+import { Menu, Cpu, Platform, Ticket, HelpFilled } from "@element-plus/icons-vue"
+import StorageForm from '../components/StorageForm.vue';
 </script>
 <style lang="less" scoped>
 .el-collapse {

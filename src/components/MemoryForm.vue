@@ -25,13 +25,16 @@ const formLabels = [
     placeholder: 'Memory Generation'
   },
   {
-    label: 'Speed', prop: 'speed', type: 'select',
-    class: 'w-1/4',
-    options: [],
+    label: 'Speed', prop: 'speed', type: 'number',
+    class: 'w-1/4', suffix: "MHz",
     placeholder: 'Memory Frequency'
   },
   {
-    label: 'Capacity', prop: 'capacity', type: 'number', suffixIcon: 'MHz'
+    label: 'Capacity', prop: 'capacity', type: 'number',class: "w-1/4", suffix:"GB"
+  },
+  {
+    label: 'Price', prop: 'price', type: 'number',
+    class: 'w-1/4', prefixIcon: Money
   },
   {
     label: 'Model', prop: 'model', type: 'input',
@@ -40,13 +43,10 @@ const formLabels = [
   },
   {
     label: 'Link', prop: 'link', type: 'input',
-    class: 'w-1/3',
+    class: 'w-1/2',
     placeholder: 'Online Shopping Product URL',
   },
-  {
-    label: 'Price', prop: 'price', type: 'number',
-    class: 'w-1/6 ml-auto', prefixIcon: Money
-  },
+
   {
     label: 'Remark', prop: 'remark', type: 'input',
     class: 'w-full',
