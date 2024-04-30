@@ -1,5 +1,10 @@
 <template>
-  <div class="border border-red-50 p-6 rounded-lg border-dotted">
+  <div class="border border-red-50 p-6 rounded-lg border-dotted mb-4 relative">
+    <div class="absolute right-3 top-0">
+      <el-button circle text type="danger">
+        <el-icon><RemoveFilled/></el-icon>
+      </el-button>
+    </div>
     <el-form label-position="top" inline :model="form">
       <el-form-item v-for="item, i in formLabels" :key="i" :label="item.label" :prop="item.prop" size="large"
         :class="item.class">
@@ -31,6 +36,7 @@
   </div>
 </template>
 <script setup>
+import { RemoveFilled } from "@element-plus/icons-vue"
 defineProps({
   formLabels: { type: Array, default: () => ([]) }
 })

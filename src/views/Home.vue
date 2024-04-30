@@ -15,7 +15,7 @@
           <h1 class="title">
             <el-icon class="mr-2"><Cpu/></el-icon>
             CPU(Central Processing Unit)
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.cpus,cpuForm)">
               <el-icon size="24"><CirclePlusFilled/></el-icon>
             </el-button>
           </h1>
@@ -116,7 +116,10 @@ import CPUCooler from '../components/CPUCooler.vue';
 import PowerForm from "../components/PowerForm.vue";
 import ComputerCase from "../components/ComputerCase.vue";
 import FanForm from '../components/FanForm.vue';
-import { diyForm } from '../utils/useForm.js'
+import { cpuForm, diyForm } from '../utils/useForm.js'
+const handleAddForm = (forms, form) => {
+  forms.push(form)
+}
 </script>
 <style lang="less" scoped>
 .el-collapse {
