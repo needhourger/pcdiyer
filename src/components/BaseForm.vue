@@ -1,7 +1,7 @@
 <template>
   <div class="border border-red-50 p-6 rounded-lg border-dotted mb-4 relative mx-8">
     <div class="absolute right-3 top-0">
-      <el-button circle text type="danger">
+      <el-button circle text type="danger" @click="emits('remove')">
         <el-icon><RemoveFilled/></el-icon>
       </el-button>
     </div>
@@ -40,6 +40,7 @@ import { RemoveFilled } from "@element-plus/icons-vue"
 defineProps({
   formLabels: { type: Array, default: () => ([]) }
 })
+const emits = defineEmits(["remove"])
 const form = defineModel()
 </script>
 <style lang="less" scoped>
