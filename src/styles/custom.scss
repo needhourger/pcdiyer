@@ -1,8 +1,12 @@
 html.dark {
   --el-bg-color: #4A225D;
+  --el-bg-color-overlay:var(--el-bg-color);
   --el-border-radius-base: 8px;
   --el-border-color: #FEDFE1AA;
   --el-font-size-base: 1.2rem;
+  --el-color-primary:#6A4C9C;
+  --el-popover-border-radius: 8px;
+  --el-select-font-size: 1rem;
 }
 
 #app {
