@@ -1,6 +1,6 @@
 import { reactive } from "vue"
 
-const motherboardForm = reactive({
+const motherboardForm = {
   cpuType: '',
   socket: '',
   formFactor: '',
@@ -10,8 +10,8 @@ const motherboardForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const cpuForm = reactive({
+}
+const cpuForm = {
   cpuType: '',
   socket: '',
   generation: '',
@@ -20,8 +20,8 @@ const cpuForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const memoryForm = reactive({
+}
+const memoryForm = {
   generation: '',
   speed: '',
   capacity: 0,
@@ -30,8 +30,8 @@ const memoryForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const gpuForm = reactive({
+}
+const gpuForm = {
   gpuType: '',
   generation: '',
   model: '',
@@ -39,8 +39,8 @@ const gpuForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const storageForm = reactive({
+}
+const storageForm = {
   type: '',
   interface: '',
   protocol: '',
@@ -51,8 +51,8 @@ const storageForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const powerForm = reactive({
+}
+const powerForm = {
   size: '',
   type: '',
   power: 0,
@@ -61,24 +61,24 @@ const powerForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const caseForm = reactive({
+}
+const caseForm = {
   size: '',
   model: '',
   link: '',
   price: 0,
   remark: '',
   num: 1,
-})
-const otherForm = reactive({
+}
+const otherForm = {
   name: '',
   model: '',
   link: '',
   price: 0,
   remark: '',
   num: 1,
-})
-const cpuCoolerForm = reactive({
+}
+const cpuCoolerForm = {
   type: '',
   size: '',
   model: '',
@@ -86,8 +86,8 @@ const cpuCoolerForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
-const fanForm = reactive({
+}
+const fanForm = {
   size: '',
   light: '',
   control: '',
@@ -96,17 +96,17 @@ const fanForm = reactive({
   price: 0,
   remark: '',
   num: 1,
-})
+}
 const diyForm = reactive({
-  motherBoard: motherboardForm,
-  cpus: [cpuForm],
-  memorys: [memoryForm],
-  gpus: [gpuForm],
-  storages: [storageForm],
-  cpuCoolers: [cpuCoolerForm],
-  powers: [powerForm],
-  fans: [fanForm],
-  case: caseForm,
+  motherBoard: reactive(motherboardForm),
+  cpus: reactive([cpuForm]),
+  memorys: reactive([memoryForm]),
+  gpus: reactive([gpuForm]),
+  storages: reactive([storageForm]),
+  cpuCoolers: reactive([cpuCoolerForm]),
+  powers: reactive([powerForm]),
+  fans: reactive([fanForm]),
+  case: reactive(caseForm),
   others: [],
 })
 

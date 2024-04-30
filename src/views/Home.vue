@@ -195,9 +195,9 @@ import {
 import BaseForm from "../components/BaseForm.vue";
 import { cpuForm, diyForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
-import { handleError } from "vue";
+import { reactive } from "vue";
 const handleAddForm = (forms, form) => {
-  forms.push(form);
+  forms.push(reactive({...form}));
 };
 const handleRemove = (forms, index) => {
   forms.splice(1, index);
