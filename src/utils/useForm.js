@@ -85,6 +85,17 @@ const cpuCoolerForm = reactive({
   link: '',
   price: 0,
   remark: '',
+  num: 1,
+})
+const fanForm = reactive({
+  size: '',
+  light: '',
+  control: '',
+  model: '',
+  link: '',
+  price: 0,
+  remark: '',
+  num: 1,
 })
 const diyForm = reactive({
   motherBoard: motherboardForm,
@@ -94,6 +105,7 @@ const diyForm = reactive({
   storages: [storageForm],
   cpuCoolers: [cpuCoolerForm],
   powers: [powerForm],
+  fans: [fanForm],
   case: caseForm,
   others: [],
 })

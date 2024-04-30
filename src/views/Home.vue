@@ -14,7 +14,7 @@
         <template #title>
           <h1 class="title">
             <el-icon class="mr-2"><Cpu/></el-icon>
-            <span>CPU(Central Processing Unit)</span>
+            CPU(Central Processing Unit)
             <el-button class="ml-auto m-1" text circle>
               <el-icon size="24"><CirclePlusFilled/></el-icon>
             </el-button>
@@ -26,7 +26,7 @@
         <template #title>
           <h1 class="title">
             <el-icon class="mr-2"><Ticket/></el-icon>
-            <span>Memory</span>
+            Memory
             <el-button class="ml-auto m-1" text circle>
               <el-icon size="24"><CirclePlusFilled/></el-icon>
             </el-button>
@@ -85,6 +85,18 @@
       <el-collapse-item>
         <template #title>
           <h1 class="title">
+            <el-icon class="mr-2"><Help/></el-icon>
+            Fan
+            <el-button class="ml-auto m-1" text circle>
+              <el-icon size="24"><CirclePlusFilled/></el-icon>
+            </el-button>
+          </h1>
+        </template>
+        <FanForm v-model="diyForm.fans[i]" v-for="fan,i in diyForm.fans" :key="i"/>
+      </el-collapse-item>
+      <el-collapse-item>
+        <template #title>
+          <h1 class="title">
             <el-icon class="mr-2"><Box/></el-icon>
             Computer Case
           </h1>
@@ -98,11 +110,12 @@
 import GPUForm from '../components/GPUForm.vue';
 import MemoryForm from '../components/MemoryForm.vue';
 import MotherBoard from '../components/MotherBoard.vue';
-import { Menu, Cpu, Platform, Ticket, HelpFilled, Orange, Stopwatch, Box, CirclePlusFilled } from "@element-plus/icons-vue"
+import { Menu, Cpu, Platform, Ticket, HelpFilled, Orange, Stopwatch, Box, CirclePlusFilled, Help } from "@element-plus/icons-vue"
 import StorageForm from '../components/StorageForm.vue';
 import CPUCooler from '../components/CPUCooler.vue';
 import PowerForm from "../components/PowerForm.vue";
-import ComputerCase from "../components/ComputerCase.vue"
+import ComputerCase from "../components/ComputerCase.vue";
+import FanForm from '../components/FanForm.vue';
 import { diyForm } from '../utils/useForm.js'
 </script>
 <style lang="less" scoped>
