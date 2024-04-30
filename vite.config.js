@@ -12,7 +12,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver({ importStyle: 'scss'})],
+      resolvers: [ElementPlusResolver({ importStyle: 'sass'})],
     }),
   ],
 })

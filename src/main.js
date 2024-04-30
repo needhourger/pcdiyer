@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import './styles/main.css'
+import 'element-plus/theme-chalk/src/dark/css-vars.scss'
 import './styles/custom.scss'
 import App from './App.vue'
 import routes from './router/index'

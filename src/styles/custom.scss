@@ -1,14 +1,7 @@
-@use 'element-plus/theme-chalk/src/index.scss';
-@use 'element-plus/theme-chalk/dark/css-vars.css';
-
 html.dark {
   --el-bg-color: #4A225D;
   --el-border-radius-base: 8px;
   --el-border-color: #FEDFE1AA;
-  --el-collapse-border-color: #FEDFE1AA
-}
-
-:root {
   --el-font-size-base: 1.2rem;
 }
 
