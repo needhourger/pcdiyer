@@ -10,6 +10,6 @@ html.dark {
   overflow: auto;
   position: relative;
   color: white;
-  font-family: 'Jersey 10';
   /* Element-plus custom */
+  font-family: 'Jersey 10';
 }
