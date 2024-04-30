@@ -1,5 +1,6 @@
 <template>
   <div class="p-10">
+    <Header/>
     <el-collapse>
       <el-collapse-item>
         <template #title>
@@ -193,6 +194,7 @@ import {
   Help,
 } from "@element-plus/icons-vue";
 import BaseForm from "../components/BaseForm.vue";
+import Header from '../components/Header.vue';
 import { cpuForm, diyForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
 import { reactive } from "vue";
