@@ -8,7 +8,7 @@
             Mother Board
           </h1>
         </template>
-        <MotherBoard v-model="diyForm.motherBoard"/>
+        <BaseForm v-model="diyForm.motherBoard" :formLabels="labels.motherboard"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -20,7 +20,7 @@
             </el-button>
           </h1>
         </template>
-        <CPUForm v-model="diyForm.cpus[i]" v-for="cpu,i in diyForm.cpus" :key="i"/>
+        <BaseForm v-model="diyForm.cpus[i]" v-for="cpu,i in diyForm.cpus" :key="i" :formLabels="labels.cpu"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -32,7 +32,7 @@
             </el-button>
           </h1>
         </template>
-        <MemoryForm v-model="diyForm.memorys[i]" v-for="memory,i in diyForm.memorys" :key="i"/>
+        <BaseForm v-model="diyForm.memorys[i]" v-for="memory,i in diyForm.memorys" :key="i" :formLabels="labels.memory"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -44,7 +44,7 @@
             </el-button>
           </h1>
         </template>
-        <GPUForm v-model="diyForm.gpus[i]" v-for="gpu,i in diyForm.gpus" :key="i"/>
+        <BaseForm v-model="diyForm.gpus[i]" v-for="gpu,i in diyForm.gpus" :key="i" :formLabels="labels.gpu"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -56,7 +56,7 @@
             </el-button>
           </h1>
         </template>
-        <StorageForm v-model="diyForm.storages[i]" v-for="storage,i in diyForm.storages" :key="i"/>
+        <BaseForm v-model="diyForm.storages[i]" v-for="storage,i in diyForm.storages" :key="i" :formLabels="labels.storage"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -68,7 +68,7 @@
             </el-button>
           </h1>
         </template>
-        <CPUCooler v-model="diyForm.cpuCoolers[i]" v-for="cooler,i in diyForm.cpuCoolers" :key="i"/>
+        <BaseForm v-model="diyForm.cpuCoolers[i]" v-for="cooler,i in diyForm.cpuCoolers" :key="i" :formLabels="labels.cpuCooler"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -80,7 +80,7 @@
             </el-button>
           </h1>
         </template>
-        <PowerForm v-model="diyForm.powers[i]" v-for="power,i in diyForm.powers" :key="i"/>
+        <BaseForm v-model="diyForm.powers[i]" v-for="power,i in diyForm.powers" :key="i" :formLabels="labels.power"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -92,7 +92,7 @@
             </el-button>
           </h1>
         </template>
-        <FanForm v-model="diyForm.fans[i]" v-for="fan,i in diyForm.fans" :key="i"/>
+        <BaseForm v-model="diyForm.fans[i]" v-for="fan,i in diyForm.fans" :key="i" :formLabels="labels.fan"/>
       </el-collapse-item>
       <el-collapse-item>
         <template #title>
@@ -101,22 +101,16 @@
             Computer Case
           </h1>
         </template>
-        <ComputerCase v-model="diyForm.case"/>
+        <BaseForm v-model="diyForm.case" :formLabels="labels.computerCase"/>
       </el-collapse-item>
     </el-collapse>
   </div>
 </template>
 <script setup>
-import GPUForm from '../components/GPUForm.vue';
-import MemoryForm from '../components/MemoryForm.vue';
-import MotherBoard from '../components/MotherBoard.vue';
 import { Menu, Cpu, Platform, Ticket, HelpFilled, Orange, Stopwatch, Box, CirclePlusFilled, Help } from "@element-plus/icons-vue"
-import StorageForm from '../components/StorageForm.vue';
-import CPUCooler from '../components/CPUCooler.vue';
-import PowerForm from "../components/PowerForm.vue";
-import ComputerCase from "../components/ComputerCase.vue";
-import FanForm from '../components/FanForm.vue';
+import BaseForm from '../components/BaseForm.vue'
 import { cpuForm, diyForm } from '../utils/useForm.js'
+import labels from "../utils/useFormLabels.js"
 const handleAddForm = (forms, form) => {
   forms.push(form)
 }

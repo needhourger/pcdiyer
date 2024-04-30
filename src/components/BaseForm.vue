@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-red-50 p-6 rounded-lg border-dotted mb-4 relative">
+  <div class="border border-red-50 p-6 rounded-lg border-dotted mb-4 relative mx-8">
     <div class="absolute right-3 top-0">
       <el-button circle text type="danger">
         <el-icon><RemoveFilled/></el-icon>
