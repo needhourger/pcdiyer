@@ -120,5 +120,6 @@ export {
   powerForm,
   caseForm,
   diyForm,
+  fanForm,
   otherForm,
 }

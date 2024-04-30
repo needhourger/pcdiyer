@@ -47,7 +47,7 @@
               <Ticket />
             </el-icon>
             Memory
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.memorys, memoryForm)">
               <el-icon size="24">
                 <CirclePlusFilled />
               </el-icon>
@@ -68,7 +68,7 @@
               <Platform />
             </el-icon>
             GPU(Graphics Processing Unit)
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.gpus,gpuForm)">
               <el-icon size="24">
                 <CirclePlusFilled />
               </el-icon>
@@ -89,7 +89,7 @@
               <HelpFilled />
             </el-icon>
             Storage Drive
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.storages,storageForm)">
               <el-icon size="24">
                 <CirclePlusFilled />
               </el-icon>
@@ -110,7 +110,7 @@
               <Orange />
             </el-icon>
             CPU Cooler
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.cpuCoolers, cpuCoolerForm)">
               <el-icon size="24">
                 <CirclePlusFilled />
               </el-icon>
@@ -131,7 +131,7 @@
               <Stopwatch />
             </el-icon>
             Power Supply
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.powers, powerForm)">
               <el-icon size="24">
                 <CirclePlusFilled />
               </el-icon>
@@ -152,7 +152,7 @@
               <Help />
             </el-icon>
             Fan
-            <el-button class="ml-auto m-1" text circle>
+            <el-button class="ml-auto m-1" text circle @click="handleAddForm(diyForm.fans, fanForm)">
               <el-icon size="24">
                 <CirclePlusFilled />
               </el-icon>
@@ -198,6 +198,12 @@ import Header from '../components/Header.vue';
 import { cpuForm, diyForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
 import { computed, reactive } from "vue";
+import { memoryForm } from "../utils/useForm.js";
+import { gpuForm } from "../utils/useForm.js";
+import { storageForm } from "../utils/useForm.js";
+import { cpuCoolerForm } from "../utils/useForm.js";
+import { powerForm } from "../utils/useForm.js";
+import { fanForm } from "../utils/useForm.js";
 const handleAddForm = (forms, form) => {
   forms.push(reactive({...form}));
 };
