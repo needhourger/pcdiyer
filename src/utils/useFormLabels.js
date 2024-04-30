@@ -523,7 +523,7 @@ const fan = [
   },
   {
     label: "Count",
-    prop: "num",
+    prop: "count",
     type: "count",
     class: "w-1/6",
   },
@@ -578,7 +578,7 @@ const computerCase = [
   },
   {
     label: "Count",
-    prop: "num",
+    prop: "count",
     type: "count",
     class: "w-1/6",
   },

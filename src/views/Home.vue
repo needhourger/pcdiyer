@@ -1,6 +1,6 @@
 <template>
   <div class="p-10">
-    <Header/>
+    <Header :price="totalPrice"/>
     <el-collapse>
       <el-collapse-item>
         <template #title>
@@ -197,13 +197,27 @@ import BaseForm from "../components/BaseForm.vue";
 import Header from '../components/Header.vue';
 import { cpuForm, diyForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 const handleAddForm = (forms, form) => {
   forms.push(reactive({...form}));
 };
 const handleRemove = (forms, index) => {
   forms.splice(1, index);
 };
+const totalPrice = computed(() => {
+  let price = 0;
+  for (let key in diyForm) {
+    console.log(diyForm[key])
+    if (Array.isArray(diyForm[key])) {
+      diyForm[key].forEach(e => {
+        price += e.price * e.count || 0;
+      });
+    } else {
+      price += diyForm[key].price * diyForm[key].count || 0;
+    }
+  }
+  return price
+})
 </script>
 <style lang="less" scoped>
 .el-collapse {
