@@ -1,10 +1,9 @@
 <template>
-  <div class="w-full p-5">
+  <div class="w-full">
     <BaseForm v-model="mbForm" :formLabels="formLabels"/>
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue';
 import { Money } from "@element-plus/icons-vue"
 import BaseForm from './BaseForm.vue';
 

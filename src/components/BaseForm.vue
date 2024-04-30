@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="border border-red-50 p-6 rounded-lg border-dotted">
     <el-form label-position="top" inline :model="form">
       <el-form-item v-for="item, i in formLabels" :key="i" :label="item.label" :prop="item.prop" size="large"
         :class="item.class">
@@ -48,10 +48,22 @@ const form = defineModel()
 .el-select {
   :deep(.el-select__wrapper) {
     font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+  :deep(.el-select__placeholder) {
+    color: #fffc;
   }
 }
 
 .el-input {
+  --el-input-placeholder-color: #fffc;
   font-size: 1.2rem;
+}
+
+.el-input-number {
+  --el-fill-color-light: #0004;
+  :deep(.el-input__inner) {
+    font-size: 1.2rem;
+  }
 }
 </style>

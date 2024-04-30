@@ -1,6 +1,6 @@
 
 <template>
-  <div class="w-full p-5">
+  <div class="w-full">
     <BaseForm v-model="cpuCoolerForm" :formLabels="formLabels"/>
   </div>
 </template>

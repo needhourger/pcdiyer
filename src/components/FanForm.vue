@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full p-5">
+  <div class="w-full">
     <BaseForm v-model="fanForm" :formLabels="formLabels"/>
   </div>
 </template>

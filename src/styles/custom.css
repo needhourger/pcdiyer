@@ -1,0 +1,15 @@
+html.dark {
+  --el-bg-color: #4A225D;
+  --el-border-radius-base: 8px;
+  --el-border-color: #FEDFE1AA;
+  --el-collapse-border-color: #FEDFE1AA
+}
+
+#app {
+  width: 100%;
+  overflow: auto;
+  position: relative;
+  color: white;
+  font-family: 'Jersey 10';
+  /* Element-plus custom */
+}
