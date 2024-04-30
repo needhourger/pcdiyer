@@ -98,7 +98,7 @@ const fanForm = {
   count: 1,
 }
 const diyForm = reactive({
-  motherBoard: reactive(motherboardForm),
+  motherboard: reactive(motherboardForm),
   cpus: reactive([cpuForm]),
   memorys: reactive([memoryForm]),
   gpus: reactive([gpuForm]),
