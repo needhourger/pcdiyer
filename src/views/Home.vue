@@ -29,6 +29,9 @@
                   <CirclePlusFilled />
                 </el-icon>
               </el-button>
+              <el-button>
+                Add Option
+              </el-button>
             </div>
           </div>
         </template>
@@ -128,7 +131,7 @@ const handleCollapseChange = (activeNames) => {
   }
 }
 const handleShare = () => {
-  const b64 = Base64.encodeURL(JSON.stringify(diyForm))
+  const b64 = Base64.encodeURL(JSON.stringify(diyForm,null,0))
   const baseUrl = window.location.href
   const shareUrl = `${baseUrl}?catalog=${b64}`
   setTimeout(async () => {
