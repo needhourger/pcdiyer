@@ -97,16 +97,16 @@ const otherForm = {
   remark: ''
 }
 const diyForm = reactive({
-  motherboard: reactive(motherboardForm),
-  cpus: reactive([cpuForm]),
-  memorys: reactive([memoryForm]),
-  gpus: reactive([gpuForm]),
-  storages: reactive([storageForm]),
-  cpuCoolers: reactive([cpuCoolerForm]),
-  powers: reactive([powerForm]),
-  fans: reactive([fanForm]),
-  case: reactive(caseForm),
-  others: reactive([]),
+  motherboard: motherboardForm,
+  cpus: [cpuForm],
+  memorys:[memoryForm],
+  gpus: [gpuForm],
+  storages:[storageForm],
+  cpuCoolers:[cpuCoolerForm],
+  powers:[powerForm],
+  fans:[fanForm],
+  case: caseForm,
+  others: [],
 })
 
 export {

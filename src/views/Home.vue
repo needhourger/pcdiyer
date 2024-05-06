@@ -1,6 +1,6 @@
 <template>
   <div class="p-10">
-    <Header :price="totalPrice" />
+    <Header :price="totalPrice" @share="handleShare"/>
     <el-collapse @change="handleCollapseChange">
       <el-collapse-item v-for="item, i in collapses" :key="i" :name="item.prop">
         <template #title>
@@ -61,7 +61,7 @@ import BaseForm from "../components/BaseForm.vue";
 import Header from '../components/Header.vue';
 import { cpuForm, diyForm, otherForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
-import { computed, reactive } from "vue";
+import { computed, onMounted, reactive } from "vue";
 import { memoryForm } from "../utils/useForm.js";
 import { gpuForm } from "../utils/useForm.js";
 import { storageForm } from "../utils/useForm.js";
@@ -71,6 +71,9 @@ import { fanForm } from "../utils/useForm.js";
 import { motherboardForm } from "../utils/useForm.js";
 import { caseForm } from "../utils/useForm.js";
 import { ref } from "vue"
+import { Base64 } from "js-base64"
+import { copy2Clipboard } from '../utils/utils.js'
+import { useRoute } from "vue-router";
 const collapses = ref([
   { label: 'Mother Board', icon: Menu, prop: 'motherboard', labelsName: 'motherboard', formBase: motherboardForm, isCollapse: true },
   { label: 'CPU', icon: Cpu, prop: 'cpus', labelsName: 'cpu', formBase: cpuForm, isCollapse: true },
@@ -92,7 +95,6 @@ const handleRemove = (forms, index) => {
 const totalPrice = computed(() => {
   let price = 0;
   for (let key in diyForm) {
-    console.log(diyForm[key])
     if (Array.isArray(diyForm[key])) {
       diyForm[key].forEach(e => {
         price += e.price * e.count || 0;
@@ -124,6 +126,25 @@ const handleCollapseChange = (activeNames) => {
     }
   }
 }
+const handleShare = () => {
+  const b64 = Base64.encodeURL(JSON.stringify(diyForm))
+  const baseUrl = window.location.href
+  const shareUrl = `${baseUrl}?catalog=${b64}`
+  setTimeout(async () => {
+    await copy2Clipboard(shareUrl)
+  }, 100);
+}
+const route = useRoute()
+const extractShareData = () => {
+  const b64 = route.query.catalog || null
+  if (!b64) return
+  const decoded = Base64.decode(b64)
+  const data = JSON.parse(decoded)
+  Object.assign(diyForm,data)
+}
+onMounted(() => {
+  extractShareData()
+})
 </script>
 <style lang="less" scoped>
 .el-collapse {
