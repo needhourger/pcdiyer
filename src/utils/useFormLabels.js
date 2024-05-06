@@ -416,6 +416,13 @@ const power = [
     suffix: "W",
   },
   {
+    label: "Price",
+    prop: "price",
+    type: "number",
+    class: "w-1/4",
+    prefixIcon: Money,
+  },
+  {
     label: "Model",
     prop: "model",
     type: "input",
@@ -426,16 +433,10 @@ const power = [
     label: "Link",
     prop: "link",
     type: "input",
-    class: "w-1/3",
+    class: "w-1/2",
     placeholder: "Online Shopping Product URL",
   },
-  {
-    label: "Price",
-    prop: "price",
-    type: "number",
-    class: "w-1/6",
-    prefixIcon: Money,
-  },
+
   {
     label: "Remark",
     prop: "remark",
