@@ -24,7 +24,7 @@
             <div class="ml-auto flex items-center">
               <span class="w-16">{{ singlePrice(diyForm[item.prop]) }} $</span>
               <el-button class="m-1" text circle :class="Array.isArray(diyForm[item.prop]) ? '' : 'invisible'"
-                @click="handleAddForm(diyForm[item.prop], item.formBase)">
+                @click.stop="handleAddForm(diyForm[item.prop], item.formBase)">
                 <el-icon>
                   <CirclePlusFilled />
                 </el-icon>
@@ -81,13 +81,14 @@ const collapses = ref([
   { label: 'Memory', icon: Ticket, prop: 'memorys', labelsName: 'memory', formBase: memoryForm, isCollapse: true },
   { label: 'Storage Drive', icon: HelpFilled, prop: 'storages', labelsName: 'storage', formBase: storageForm, isCollapse: true },
   { label: 'CPU Cooler', icon: Orange, prop: 'cpuCoolers', labelsName: 'cpuCooler', formBase: cpuCoolerForm, isCollapse: true },
-  { label: 'Fan', icon: Stopwatch, prop: 'fans', labelsName: 'fan', formBase: fanForm, isCollapse: true },
-  { label: 'Power Supply', icon: Help, prop: 'powers', labelsName: 'power', formBase: powerForm, isCollapse: true },
+  { label: 'Fan', icon: Help, prop: 'fans', labelsName: 'fan', formBase: fanForm, isCollapse: true },
+  { label: 'Power Supply', icon: Stopwatch, prop: 'powers', labelsName: 'power', formBase: powerForm, isCollapse: true },
   { label: 'Computer Case', icon: Box, prop: 'case', labelsName: 'computerCase', formBase: caseForm, isCollapse: true },
   { label: 'Other', icon: Grid, prop: 'others', labelsName: 'other', formBase: otherForm, isCollapse: true },
 ])
-const handleAddForm = (forms, form) => {
+const handleAddForm = (forms, form,event) => {
   forms.push(reactive({ ...form }));
+  console.log(event)
 };
 const handleRemove = (forms, index) => {
   forms.splice(1, index);
