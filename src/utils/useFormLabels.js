@@ -583,6 +583,13 @@ const computerCase = [
     class: "w-1/6",
   },
 ];
+const other = [
+  { label: 'Name', prop: 'name', type:'input', class: 'w-5/6'},
+  { label: 'Price', prop: 'price', type: 'number', class: 'w-1/6', prefixIcon: Money},
+  { label: 'link', prop: 'link', type:'input', class: 'w-5/6'},
+  { label: 'Count', prop: 'count', type: 'count', class: 'w-1/6'},
+  { label: 'Remark', prop: 'remark', type: 'input', class: 'w-full'}
+]
 const labels = {
   motherboard,
   cpu,
@@ -593,5 +600,6 @@ const labels = {
   fan,
   computerCase,
   power,
+  other
 };
 export default labels

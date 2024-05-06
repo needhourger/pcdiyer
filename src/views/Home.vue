@@ -42,10 +42,11 @@ import {
   Box,
   CirclePlusFilled,
   Help,
+  Grid,
 } from "@element-plus/icons-vue";
 import BaseForm from "../components/BaseForm.vue";
 import Header from '../components/Header.vue';
-import { cpuForm, diyForm } from "../utils/useForm.js";
+import { cpuForm, diyForm, otherForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
 import { computed, reactive } from "vue";
 import { memoryForm } from "../utils/useForm.js";
@@ -66,6 +67,7 @@ const collapses = [
   { label: 'Fan', icon: Stopwatch, prop: 'fans', labelsName: 'fan', formBase: fanForm },
   { label: 'Power Supply', icon: Help, prop: 'powers', labelsName: 'power', formBase: powerForm },
   { label: 'Computer Case', icon: Box, prop: 'case', labelsName: 'computerCase', formBase: caseForm },
+  { label: 'Other', icon: Grid, prop: 'others', labelsName: 'other', formBase: otherForm},
 ]
 const handleAddForm = (forms, form) => {
   forms.push(reactive({...form}));
@@ -89,6 +91,7 @@ const totalPrice = computed(() => {
 })
 const singlePrice = (target) => {
   let price = 0
+  if (!target) return 0
   if (Array.isArray(target)) {
     target.forEach(e => {
       price += e.price * e.count || 0;
