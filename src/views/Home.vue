@@ -1,30 +1,43 @@
 <template>
   <div class="p-10">
-    <Header :price="totalPrice"/>
-    <el-collapse>
-      <el-collapse-item v-for="item,i in collapses" :key="i">
+    <Header :price="totalPrice" />
+    <el-collapse @change="handleCollapseChange">
+      <el-collapse-item v-for="item, i in collapses" :key="i" :name="item.prop">
         <template #title>
           <div class="title">
-            <el-icon class="mr-2">
-              <component :is="item.icon"></component>
-            </el-icon>
-            <span>{{item.label}}</span>
+            <div class="flex items-center w-60">
+              <el-icon class="mr-2">
+                <component :is="item.icon"></component>
+              </el-icon>
+              <span>{{ item.label }}</span>
+            </div>
+            <div v-show="item.isCollapse" class="text-gray-400 text-start overflow-hidden text-ellipsis text-nowrap">
+              <template v-if="Array.isArray(diyForm[item.prop])">
+                <span v-for="m,j in diyForm[item.prop]" :key="j">
+                  {{ m.model }}<span v-if="m.count > 1" class="text-blue-300">x{{ m.count }}</span>&nbsp;&nbsp;
+                </span>
+              </template>
+              <template v-else>
+                <span>{{ diyForm[item.prop].model }}</span>
+              </template>
+            </div>
             <div class="ml-auto flex items-center">
-              <span>{{ singlePrice(diyForm[item.prop]) }} $</span>
-              <el-button class="m-1" text circle
-                :class="Array.isArray(diyForm[item.prop])?'':'invisible'"
-                @click="handleAddForm(diyForm[item.prop],item.formBase)">
-                <el-icon><CirclePlusFilled/></el-icon>
+              <span class="w-16">{{ singlePrice(diyForm[item.prop]) }} $</span>
+              <el-button class="m-1" text circle :class="Array.isArray(diyForm[item.prop]) ? '' : 'invisible'"
+                @click="handleAddForm(diyForm[item.prop], item.formBase)">
+                <el-icon>
+                  <CirclePlusFilled />
+                </el-icon>
               </el-button>
             </div>
           </div>
         </template>
         <template v-if="Array.isArray(diyForm[item.prop])">
-          <BaseForm v-for="form,i in diyForm[item.prop]"
-            v-model="diyForm[item.prop][i]" :formLabels="labels[item.labelsName]"/>
+          <BaseForm v-for="form, i in diyForm[item.prop]" v-model="diyForm[item.prop][i]"
+            :formLabels="labels[item.labelsName]" @remove="handleRemove(diyForm[item.prop],i)"/>
         </template>
         <template v-else>
-          <BaseForm v-model="diyForm[item.prop]" :formLabels="labels[item.labelsName]"/>
+          <BaseForm v-model="diyForm[item.prop]" :formLabels="labels[item.labelsName]" @remove="handleRemove(diyForm[item.prop],i)"/>
         </template>
       </el-collapse-item>
     </el-collapse>
@@ -57,20 +70,21 @@ import { powerForm } from "../utils/useForm.js";
 import { fanForm } from "../utils/useForm.js";
 import { motherboardForm } from "../utils/useForm.js";
 import { caseForm } from "../utils/useForm.js";
-const collapses = [
-  { label: 'Mother Board', icon: Menu, prop: 'motherboard', labelsName: 'motherboard',formBase: motherboardForm },
-  { label: 'CPU', icon: Cpu, prop: 'cpus',labelsName:'cpu', formBase: cpuForm },
-  { label: 'GPU', icon: Platform, prop: 'gpus', labelsName:'gpu', formBase: gpuForm},
-  { label: 'Memory', icon: Ticket, prop: 'memorys', labelsName: 'memory', formBase: memoryForm },
-  { label: 'Storage Drive', icon: HelpFilled, prop: 'storages', labelsName:'storage', formBase: storageForm },
-  { label: 'CPU Cooler', icon: Orange, prop: 'cpuCoolers', labelsName: 'cpuCooler', formBase: cpuCoolerForm },
-  { label: 'Fan', icon: Stopwatch, prop: 'fans', labelsName: 'fan', formBase: fanForm },
-  { label: 'Power Supply', icon: Help, prop: 'powers', labelsName: 'power', formBase: powerForm },
-  { label: 'Computer Case', icon: Box, prop: 'case', labelsName: 'computerCase', formBase: caseForm },
-  { label: 'Other', icon: Grid, prop: 'others', labelsName: 'other', formBase: otherForm},
-]
+import { ref } from "vue"
+const collapses = ref([
+  { label: 'Mother Board', icon: Menu, prop: 'motherboard', labelsName: 'motherboard', formBase: motherboardForm, isCollapse: true },
+  { label: 'CPU', icon: Cpu, prop: 'cpus', labelsName: 'cpu', formBase: cpuForm, isCollapse: true },
+  { label: 'GPU', icon: Platform, prop: 'gpus', labelsName: 'gpu', formBase: gpuForm, isCollapse: true },
+  { label: 'Memory', icon: Ticket, prop: 'memorys', labelsName: 'memory', formBase: memoryForm, isCollapse: true },
+  { label: 'Storage Drive', icon: HelpFilled, prop: 'storages', labelsName: 'storage', formBase: storageForm, isCollapse: true },
+  { label: 'CPU Cooler', icon: Orange, prop: 'cpuCoolers', labelsName: 'cpuCooler', formBase: cpuCoolerForm, isCollapse: true },
+  { label: 'Fan', icon: Stopwatch, prop: 'fans', labelsName: 'fan', formBase: fanForm, isCollapse: true },
+  { label: 'Power Supply', icon: Help, prop: 'powers', labelsName: 'power', formBase: powerForm, isCollapse: true },
+  { label: 'Computer Case', icon: Box, prop: 'case', labelsName: 'computerCase', formBase: caseForm, isCollapse: true },
+  { label: 'Other', icon: Grid, prop: 'others', labelsName: 'other', formBase: otherForm, isCollapse: true },
+])
 const handleAddForm = (forms, form) => {
-  forms.push(reactive({...form}));
+  forms.push(reactive({ ...form }));
 };
 const handleRemove = (forms, index) => {
   forms.splice(1, index);
@@ -100,6 +114,15 @@ const singlePrice = (target) => {
     price += target.price * target.count
   }
   return price
+}
+const handleCollapseChange = (activeNames) => {
+  for (let i=0; i< collapses.value.length; i++) {
+    if (activeNames.indexOf(collapses.value[i].prop) !== -1) {
+      collapses.value[i].isCollapse = false
+    } else {
+      collapses.value[i].isCollapse = true
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
