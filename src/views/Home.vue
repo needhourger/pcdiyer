@@ -20,7 +20,7 @@
           </div>
         </template>
         <template v-if="Array.isArray(diyForm[item.prop])">
-          <BaseForm v-for="form,i in diyForm[item.prop]"  
+          <BaseForm v-for="form,i in diyForm[item.prop]"
             v-model="diyForm[item.prop][i]" :formLabels="labels[item.labelsName]"/>
         </template>
         <template v-else>
