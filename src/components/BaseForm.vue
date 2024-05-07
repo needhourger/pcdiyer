@@ -1,11 +1,15 @@
 <template>
-  <div class="border border-red-50 p-6 rounded-lg border-dotted mb-4 relative mx-8">
+  <div class="p-6 rounded-lg mb-4 relative"
+    style="border: 3px solid rgb(254,242,242)"
+    :style="{
+      borderColor: form.option !== '' && form.option.color ?form.option.color : null,
+    }">
     <div class="absolute right-3 top-0">
       <el-button circle text type="danger" @click="emits('remove')">
         <el-icon><RemoveFilled/></el-icon>
       </el-button>
     </div>
-    <el-form label-position="top" inline :model="form">
+    <el-form label-position="top" inline :model="form" v-if="form">
       <el-form-item v-for="item, i in formLabels" :key="i" :label="item.label" :prop="item.prop" size="large"
         :class="item.class">
         <el-select v-if="item.type === 'select'" filterable allow-create v-model="form[`${item.prop}`]"

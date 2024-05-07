@@ -10,6 +10,7 @@ const motherboardForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const cpuForm = {
   cpuType: '',
@@ -20,6 +21,7 @@ const cpuForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const memoryForm = {
   generation: '',
@@ -30,6 +32,7 @@ const memoryForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const gpuForm = {
   gpuType: '',
@@ -39,6 +42,7 @@ const gpuForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const storageForm = {
   type: '',
@@ -51,6 +55,7 @@ const storageForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const powerForm = {
   size: '',
@@ -61,6 +66,7 @@ const powerForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const caseForm = {
   size: '',
@@ -69,6 +75,7 @@ const caseForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const cpuCoolerForm = {
   type: '',
@@ -78,6 +85,7 @@ const cpuCoolerForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const fanForm = {
   size: '',
@@ -88,16 +96,18 @@ const fanForm = {
   price: 0,
   remark: '',
   count: 1,
+  option: '',
 }
 const otherForm = {
   name: '',
   link: '',
   count: 1,
   price: 0,
-  remark: ''
+  remark: '',
+  option: '',
 }
 const diyForm = reactive({
-  motherboard: motherboardForm,
+  motherboard: [motherboardForm],
   cpus: [cpuForm],
   memorys:[memoryForm],
   gpus: [gpuForm],
@@ -105,7 +115,7 @@ const diyForm = reactive({
   cpuCoolers:[cpuCoolerForm],
   powers:[powerForm],
   fans:[fanForm],
-  case: caseForm,
+  case: [caseForm],
   others: [],
 })
 

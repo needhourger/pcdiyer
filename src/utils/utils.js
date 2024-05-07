@@ -30,3 +30,11 @@ const copy2ClipboardV0 = (text) => {
     console.error(err)
   }
 }
+
+export const randomColorHex = () => {
+  let r = Math.floor(Math.random() * 200) + 55; // 55-255
+  let g = Math.floor(Math.random() * 200) + 55; // 55-255
+  let b = Math.floor(Math.random() * 200) + 55; // 55-255
+
+  return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`.toUpperCase();
+}

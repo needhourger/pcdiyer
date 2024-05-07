@@ -23,25 +23,22 @@
             </div>
             <div class="ml-auto flex items-center">
               <span class="w-16">{{ singlePrice(diyForm[item.prop]) }} $</span>
-              <el-button class="m-1" text circle :class="Array.isArray(diyForm[item.prop]) ? '' : 'invisible'"
+              <el-button class="m-1" text circle :class="item.single ? 'invisible' : ''"
                 @click.stop="handleAddForm(diyForm[item.prop], item.formBase)">
                 <el-icon>
                   <CirclePlusFilled />
                 </el-icon>
               </el-button>
-              <el-button>
+              <el-button @click.stop="handleAddForm(diyForm[item.prop], item.formBase, true)">
                 Add Option
               </el-button>
             </div>
           </div>
         </template>
-        <template v-if="Array.isArray(diyForm[item.prop])">
+        <div class="p-3 ml-4">
           <BaseForm v-for="form, i in diyForm[item.prop]" v-model="diyForm[item.prop][i]"
             :formLabels="labels[item.labelsName]" @remove="handleRemove(diyForm[item.prop],i)"/>
-        </template>
-        <template v-else>
-          <BaseForm v-model="diyForm[item.prop]" :formLabels="labels[item.labelsName]" @remove="handleRemove(diyForm[item.prop],i)"/>
-        </template>
+        </div>
       </el-collapse-item>
     </el-collapse>
   </div>
@@ -75,23 +72,29 @@ import { motherboardForm } from "../utils/useForm.js";
 import { caseForm } from "../utils/useForm.js";
 import { ref } from "vue"
 import { Base64 } from "js-base64"
-import { copy2Clipboard } from '../utils/utils.js'
+import { copy2Clipboard, randomColorHex } from '../utils/utils.js'
 import { useRoute } from "vue-router";
+import { v4 } from "uuid"
 const collapses = ref([
-  { label: 'Mother Board', icon: Menu, prop: 'motherboard', labelsName: 'motherboard', formBase: motherboardForm, isCollapse: true },
-  { label: 'CPU', icon: Cpu, prop: 'cpus', labelsName: 'cpu', formBase: cpuForm, isCollapse: true },
-  { label: 'GPU', icon: Platform, prop: 'gpus', labelsName: 'gpu', formBase: gpuForm, isCollapse: true },
-  { label: 'Memory', icon: Ticket, prop: 'memorys', labelsName: 'memory', formBase: memoryForm, isCollapse: true },
-  { label: 'Storage Drive', icon: HelpFilled, prop: 'storages', labelsName: 'storage', formBase: storageForm, isCollapse: true },
-  { label: 'CPU Cooler', icon: Orange, prop: 'cpuCoolers', labelsName: 'cpuCooler', formBase: cpuCoolerForm, isCollapse: true },
-  { label: 'Fan', icon: Help, prop: 'fans', labelsName: 'fan', formBase: fanForm, isCollapse: true },
-  { label: 'Power Supply', icon: Stopwatch, prop: 'powers', labelsName: 'power', formBase: powerForm, isCollapse: true },
-  { label: 'Computer Case', icon: Box, prop: 'case', labelsName: 'computerCase', formBase: caseForm, isCollapse: true },
-  { label: 'Other', icon: Grid, prop: 'others', labelsName: 'other', formBase: otherForm, isCollapse: true },
+  { label: 'Mother Board', icon: Menu, prop: 'motherboard', labelsName: 'motherboard', formBase: motherboardForm, isCollapse: true, single: true },
+  { label: 'CPU', icon: Cpu, prop: 'cpus', labelsName: 'cpu', formBase: cpuForm, isCollapse: true, single: false },
+  { label: 'GPU', icon: Platform, prop: 'gpus', labelsName: 'gpu', formBase: gpuForm, isCollapse: true, single: false },
+  { label: 'Memory', icon: Ticket, prop: 'memorys', labelsName: 'memory', formBase: memoryForm, isCollapse: true, single: false },
+  { label: 'Storage Drive', icon: HelpFilled, prop: 'storages', labelsName: 'storage', formBase: storageForm, isCollapse: true , single: false},
+  { label: 'CPU Cooler', icon: Orange, prop: 'cpuCoolers', labelsName: 'cpuCooler', formBase: cpuCoolerForm, isCollapse: true, single: false },
+  { label: 'Fan', icon: Help, prop: 'fans', labelsName: 'fan', formBase: fanForm, isCollapse: true, single: false },
+  { label: 'Power Supply', icon: Stopwatch, prop: 'powers', labelsName: 'power', formBase: powerForm, isCollapse: true , single: false},
+  { label: 'Computer Case', icon: Box, prop: 'case', labelsName: 'computerCase', formBase: caseForm, isCollapse: true, single: true },
+  { label: 'Other', icon: Grid, prop: 'others', labelsName: 'other', formBase: otherForm, isCollapse: true, single: false },
 ])
-const handleAddForm = (forms, form,event) => {
-  forms.push(reactive({ ...form }));
-  console.log(event)
+const handleAddForm = (forms, form, isNew = false) => {
+  if (isNew) {
+    const newOption = { ...form, option: { id:v4(), color:randomColorHex() }}
+    console.log(newOption)
+    forms.push(reactive(newOption))
+  } else {
+    forms.push(reactive({ ...form }));
+  }
 };
 const handleRemove = (forms, index) => {
   forms.splice(1, index);
