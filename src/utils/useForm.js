@@ -117,6 +117,7 @@ const diyForm = reactive({
   fans:[fanForm],
   case: [caseForm],
   others: [],
+  options: [],
 })
 
 export {

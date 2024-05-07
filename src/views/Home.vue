@@ -29,7 +29,8 @@
                   <CirclePlusFilled />
                 </el-icon>
               </el-button>
-              <el-button @click.stop="handleAddForm(diyForm[item.prop], item.formBase, true)">
+              <el-button class="mr-3"
+                @click.stop="handleAddForm(diyForm[item.prop], item.formBase, true)">
                 Add Option
               </el-button>
             </div>
@@ -89,8 +90,9 @@ const collapses = ref([
 ])
 const handleAddForm = (forms, form, isNew = false) => {
   if (isNew) {
-    const newOption = { ...form, option: { id:v4(), color:randomColorHex() }}
-    console.log(newOption)
+    const option = { id: v4(), color: randomColorHex() }
+    const newOption = { ...form, option: option}
+    diyForm.options.push(reactive(option))
     forms.push(reactive(newOption))
   } else {
     forms.push(reactive({ ...form }));
