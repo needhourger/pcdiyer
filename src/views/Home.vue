@@ -16,7 +16,16 @@
                 v-for="form, findex in diyForm[collapse.prop].filter(v => currentOptionId === 'all' || v.option.id === currentOptionId)"
                 :key="findex">
                 <span :style="{ color: form.option.color + 'aa' }">{{ form.model }}</span>
-                <span v-if="form.count > 1" class="text-blue-300">x{{ form.count }}</span> &nbsp;&nbsp;</span>
+                <span v-if="form.count > 1" class="text-blue-300">x{{ form.count }}</span> &nbsp;&nbsp;
+              </span>
+              <template v-if="currentOptionId !== 'all' && diyForm[collapse.prop].filter(v => v.option.id === currentOptionId).length === 0">
+                <span
+                  v-for="form, findex in diyForm[collapse.prop].filter(v => v.option.id === 'default')"
+                  :key="findex">
+                  <span :style="{ color: form.option.color + 'aa' }">{{ form.model }}</span>
+                  <span v-if="form.count > 1" class="text-blue-300">x{{ form.count }}</span> &nbsp;&nbsp;
+                </span>
+              </template>
             </div>
             <div class="ml-auto flex items-center">
               <span class="w-16">{{ singlePrice(diyForm[collapse.prop]) }} $</span>
@@ -33,10 +42,17 @@
           </div>
         </template>
         <div class="p-3 ml-4">
-          <template v-for="form, findex in diyForm[collapse.prop]">
+          <template v-for="form, findex in diyForm[collapse.prop]" :key="findex">
             <BaseForm v-if="currentOptionId === 'all' || currentOptionId === form.option.id"
-              :key="findex" v-model="diyForm[collapse.prop][findex]" :formLabels="labels[collapse.labelsName]"
+              v-model="diyForm[collapse.prop][findex]" :formLabels="labels[collapse.labelsName]"
               @remove="handleRemove(diyForm[collapse.prop], findex)" />
+          </template>
+          <template v-if=" currentOptionId !== 'all' && diyForm[collapse.prop].filter(v => currentOptionId === v.option.id).length === 0">
+            <template v-for="form, findex in diyForm[collapse.prop]" :key="findex">
+              <BaseForm v-if="form.option.id === 'default'"
+                v-model="diyForm[collapse.prop][findex]" :formLabels="labels[collapse.labelsName]"
+                @remove="handleRemove(diyForm[collapse.prop], findex)" />
+            </template>
           </template>
         </div>
       </el-collapse-item>
