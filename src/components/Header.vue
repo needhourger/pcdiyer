@@ -9,20 +9,39 @@
         </el-select>
         <el-button type="primary" @click="emits('share')" size="large">Share</el-button>
       </div>
-      <span class="w-full text-end mt-4">Total Price: {{ price }} $</span>
+      <div class="w-full text-end mt-4">
+        <span v-for="option, oindex in options" :style="{ color: option.color }">
+          {{ option.id }} : {{ totalPrice(option.id) }} $
+        </span>
+      </div>
     </div>
   </div>
 </template>
 <script setup>
+import { computed } from 'vue';
+import { singlePrice } from '../utils/utils.js'
+
 const emits = defineEmits(["share", "update:option"])
 const props = defineProps({
-  price: { type: Number, default: 0 },
-  options: { type: Array, default: () => ([]) },
+  forms: { type: Object, default: () => ({}) },
+})
+const options = computed(() => {
+  return props.forms.options
 })
 const currentOptionId = defineModel({ type: String, default: 'default' })
+const totalPrice = (oid = 'default') => {
+  let price = 0
+  for (const key in props.forms) {
+    if (key === 'options') continue
+    price += singlePrice(oid)
+  }
+  return price
+}
 </script>
 <style lang="less" scoped>
 .el-select {
-  --el-select-font-size: 16px;
+  :deep(.el-select__wrapper) {
+    font-size: 18px;
+  }
 }
 </style>

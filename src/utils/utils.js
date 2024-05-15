@@ -38,3 +38,16 @@ export const randomColorHex = () => {
 
   return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`.toUpperCase();
 }
+
+export const singlePrice = (target, optionId = 'default') => {
+  let price = 0
+  if (!target || !Array.isArray(target)) return 0
+  let targetOption = target.filter(v => v.option.id === optionId)
+  if (targetOption.length === 0) {
+    targetOption = target.filter(v => v.option.id === 'default')
+  }
+  targetOption.forEach(i => {
+    price += i.price * i.count
+  })
+  return price
+}

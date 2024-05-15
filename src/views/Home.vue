@@ -1,6 +1,6 @@
 <template>
   <div class="p-10">
-    <Header :price="totalPrice" @share="handleShare" :options="diyForm.options" v-model="currentOptionId" />
+    <Header :forms="diyForm" @share="handleShare" v-model="currentOptionId" />
     <el-collapse @change="handleCollapseChange">
       <el-collapse-item v-for="collapse, cindex in collapses" :key="cindex" :name="collapse.prop">
         <template #title>
@@ -79,7 +79,7 @@ import BaseForm from "../components/BaseForm.vue";
 import Header from '../components/Header.vue';
 import { cpuForm, diyForm, otherForm } from "../utils/useForm.js";
 import labels from "../utils/useFormLabels.js";
-import { computed, h, markRaw, onMounted, reactive } from "vue";
+import { markRaw, onMounted, reactive } from "vue";
 import { memoryForm } from "../utils/useForm.js";
 import { gpuForm } from "../utils/useForm.js";
 import { storageForm } from "../utils/useForm.js";
@@ -90,7 +90,7 @@ import { motherboardForm } from "../utils/useForm.js";
 import { caseForm } from "../utils/useForm.js";
 import { ref } from "vue"
 import { Base64 } from "js-base64"
-import { copy2Clipboard, randomColorHex } from '../utils/utils.js'
+import { copy2Clipboard, randomColorHex, singlePrice } from '../utils/utils.js'
 import { useRoute } from "vue-router";
 import { v4 } from "uuid"
 const collapses = markRaw([
@@ -139,31 +139,7 @@ const handleRemove = (forms, index) => {
     }
   }
 };
-const totalPrice = computed(() => {
-  let price = 0;
-  for (let key in diyForm) {
-    if (Array.isArray(diyForm[key])) {
-      diyForm[key].forEach(e => {
-        price += e.price * e.count || 0;
-      });
-    } else {
-      price += diyForm[key].price * diyForm[key].count || 0;
-    }
-  }
-  return price
-})
-const singlePrice = (target, optionId = 'default') => {
-  let price = 0
-  if (!target || !Array.isArray(target)) return 0
-  let targetOption = target.filter(v => v.option.id === optionId)
-  if (targetOption.length === 0) {
-    targetOption = target.filter(v => v.option.id === 'default')
-  }
-  targetOption.forEach(i => {
-    price += i.price * i.count
-  })
-  return price
-}
+
 const handleCollapseChange = (activeNames) => {
   for (let i = 0; i < collapses.length; i++) {
     if (activeNames.indexOf(collapses[i].prop) !== -1) {
