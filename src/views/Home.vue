@@ -28,7 +28,12 @@
               </template>
             </div>
             <div class="ml-auto flex items-center">
-              <span class="w-16">{{ singlePrice(diyForm[collapse.prop]) }} $</span>
+              <template v-for="option, oindex in diyForm.options.filter(v => currentOptionId === 'all' || v.id === currentOptionId)" :key="oindex">
+                <span class="w-16" :style="{ color: option.color + 'aa' }">{{ singlePrice(diyForm[collapse.prop], option.id) }} $</span>
+              </template>
+              <template v-if="currentOptionId !== 'all' && diyForm[collapse.prop].filter(v => v.option.id === currentOptionId).length === 0">
+                <span class="w-16" :style="{ color: option.color + 'aa' }">{{ singlePrice(diyForm[collapse.prop]) }} $</span>
+              </template>
               <el-button class="m-1" text circle
                 @click.stop="handleAddForm(diyForm[collapse.prop], collapse.formBase)">
                 <el-icon>
@@ -150,16 +155,12 @@ const totalPrice = computed(() => {
   }
   return price
 })
-const singlePrice = (target) => {
+const singlePrice = (target, optionId = 'default') => {
   let price = 0
-  if (!target) return 0
-  if (Array.isArray(target)) {
-    target.forEach(e => {
-      price += e.price * e.count || 0;
-    })
-  } else {
-    price += target.price * target.count
-  }
+  if (!target || !Array.isArray(target)) return 0
+  target.filter(v => v.option.id === optionId).forEach(i => {
+    price += i.price * i.count
+  })
   return price
 }
 const handleCollapseChange = (activeNames) => {
