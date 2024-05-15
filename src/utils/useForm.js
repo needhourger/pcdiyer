@@ -10,7 +10,7 @@ const motherboardForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const cpuForm = {
   cpuType: '',
@@ -21,7 +21,7 @@ const cpuForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const memoryForm = {
   generation: '',
@@ -32,7 +32,7 @@ const memoryForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const gpuForm = {
   gpuType: '',
@@ -42,7 +42,7 @@ const gpuForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const storageForm = {
   type: '',
@@ -55,7 +55,7 @@ const storageForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const powerForm = {
   size: '',
@@ -66,7 +66,7 @@ const powerForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const caseForm = {
   size: '',
@@ -75,7 +75,7 @@ const caseForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const cpuCoolerForm = {
   type: '',
@@ -85,7 +85,7 @@ const cpuCoolerForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const fanForm = {
   size: '',
@@ -96,7 +96,7 @@ const fanForm = {
   price: 0,
   remark: '',
   count: 1,
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const otherForm = {
   name: '',
@@ -104,7 +104,7 @@ const otherForm = {
   count: 1,
   price: 0,
   remark: '',
-  option: '',
+  option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const diyForm = reactive({
   motherboard: [motherboardForm],
@@ -117,7 +117,7 @@ const diyForm = reactive({
   fans:[fanForm],
   case: [caseForm],
   others: [],
-  options: [],
+  options: [{ id: 'default', name: 'default', color: "#E5E7EB"}],
 })
 
 export {

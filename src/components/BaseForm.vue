@@ -2,7 +2,7 @@
   <div class="p-6 rounded-lg mb-4 relative"
     style="border: 3px solid rgb(254,242,242)"
     :style="{
-      borderColor: form.option !== '' && form.option.color ?form.option.color : null,
+      borderColor: form.option.color ? form.option.color : null,
     }">
     <div class="absolute right-3 top-0">
       <el-button circle text type="danger" @click="emits('remove')">
