@@ -8,7 +8,7 @@ import App from './App.vue'
 import routes from './router/index'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
