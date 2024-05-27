@@ -10,9 +10,9 @@
         <el-button type="primary" @click="emits('share')" size="large">Share</el-button>
       </div>
       <div class="w-full text-end mt-4">
-        <span v-for="option, oindex in options" :style="{ color: option.color }">
+        <div v-for="option, oindex in options" :style="{ color: option.color }">
           {{ option.id }} : {{ totalPrice(option.id) }} $
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@ const totalPrice = (oid = 'default') => {
   let price = 0
   for (const key in props.forms) {
     if (key === 'options') continue
-    price += singlePrice(oid)
+    price += singlePrice(props.forms[key],oid)
   }
   return price
 }
