@@ -124,7 +124,7 @@ const handleAddForm = (forms, form) => {
 };
 const handleRemove = (forms, index) => {
   const removedOptionId = forms[index].option.id
-  forms.splice(1, index);
+  forms.splice(index, 1);
   if (removedOptionId !== 'default') {
     let options = 0
     for (const key in diyForm) {
