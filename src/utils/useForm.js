@@ -99,7 +99,7 @@ const fanForm = {
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
 }
 const otherForm = {
-  name: '',
+  model: '',
   link: '',
   count: 1,
   price: 0,
@@ -116,7 +116,7 @@ const diyForm = reactive({
   powers:[powerForm],
   fans:[fanForm],
   case: [caseForm],
-  others: [],
+  others: [otherForm],
   options: [{ id: 'default', name: 'default', color: "#E5E7EB"}],
 })
 

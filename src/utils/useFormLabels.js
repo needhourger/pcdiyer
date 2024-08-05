@@ -586,7 +586,7 @@ const computerCase = [
   },
 ];
 const other = [
-  { label: 'Name', prop: 'name', type:'input', class: 'w-5/6'},
+  { label: 'Model', prop: 'model', type:'input', class: 'w-5/6'},
   { label: 'Price', prop: 'price', type: 'number', class: 'w-1/6', prefixIcon: Money},
   { label: 'link', prop: 'link', type:'input', class: 'w-5/6'},
   { label: 'Count', prop: 'count', type: 'count', class: 'w-1/6'},
