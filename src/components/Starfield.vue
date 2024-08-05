@@ -24,7 +24,7 @@ const createStars = () => {
   canvas2.height = 100;
   const half = canvas2.width / 2
   const gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half)
-  gradient2.addColorStop(0.025, '#FF4')
+  gradient2.addColorStop(0.2, '#FF4')
   gradient2.addColorStop(0.3, '#FF2C')
   gradient2.addColorStop(0.45,'#FF35')
   gradient2.addColorStop(1, 'transparent')
