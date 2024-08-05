@@ -148,6 +148,13 @@ const memory = [
     class: "w-1/6",
   },
   {
+    label: "Link",
+    prop: "link",
+    type: "input",
+    class: "w-full",
+    placeholder: "Online Shopping Product URL",
+  },
+  {
     label: "Generation",
     prop: "generation",
     type: "select",
@@ -171,17 +178,10 @@ const memory = [
     suffix: "GB",
   },
   {
-    label: "Link",
-    prop: "link",
-    type: "input",
-    class: "w-1/2",
-    placeholder: "Online Shopping Product URL",
-  },
-  {
     label: "Remark",
     prop: "remark",
     type: "input",
-    class: "w-1/2",
+    class: "w-full",
     placeholder: "Remark",
   },
 
@@ -208,6 +208,13 @@ const gpu = [
     class: "w-1/6",
   },
   {
+    label: "Link",
+    prop: "link",
+    type: "input",
+    class: "w-full",
+    placeholder: "Online Shopping Product URL",
+  },
+  {
     label: "GPU Type",
     prop: "gpuType",
     type: "select",
@@ -224,17 +231,10 @@ const gpu = [
     placeholder: "GPU Generation",
   },
   {
-    label: "Link",
-    prop: "link",
-    type: "input",
-    class: "w-1/2",
-    placeholder: "Online Shopping Product URL",
-  },
-  {
     label: "Remark",
     prop: "remark",
     type: "input",
-    class: "w-1/2",
+    class: "w-full",
     placeholder: "Remark",
   },
 
@@ -259,6 +259,13 @@ const storage = [
     prop: "count",
     type: "count",
     class: "w-1/6",
+  },
+  {
+    label: "Link",
+    prop: "link",
+    type: "input",
+    class: "w-full",
+    placeholder: "Online Shopping Product URL",
   },
   {
     label: "Type",
@@ -321,17 +328,10 @@ const storage = [
     placeholder: "Storage Drive Capacity",
   },
   {
-    label: "Link",
-    prop: "link",
-    type: "input",
-    class: "w-1/2",
-    placeholder: "Online Shopping Product URL",
-  },
-  {
     label: "Remark",
     prop: "remark",
     type: "input",
-    class: "w-1/2",
+    class: "w-full",
     placeholder: "Remark",
   },
 ];
@@ -357,6 +357,13 @@ const cpuCooler = [
     class: "w-1/6",
   },
   {
+    label: "Link",
+    prop: "link",
+    type: "input",
+    class: "w-full",
+    placeholder: "Online Shopping Product URL",
+  },
+  {
     label: "Cooler Type",
     prop: "type",
     type: "select",
@@ -376,18 +383,12 @@ const cpuCooler = [
     options: ["120mm", "140mm", "240mm", "280mm", "360mm", "480mm"],
     placeholder: "CPU Cooler Size",
   },
-  {
-    label: "Link",
-    prop: "link",
-    type: "input",
-    class: "w-1/2",
-    placeholder: "Online Shopping Product URL",
-  },
+
   {
     label: "Remark",
     prop: "remark",
     type: "input",
-    class: "w-1/2",
+    class: "w-full",
     placeholder: "Remark",
   },
 ];
@@ -478,6 +479,13 @@ const fan = [
     class: "w-1/6",
   },
   {
+    label: "Link",
+    prop: "link",
+    type: "input",
+    class: "w-full",
+    placeholder: "Online Shopping Product URL",
+  },
+  {
     label: "Size",
     prop: "size",
     type: "select",
@@ -519,17 +527,10 @@ const fan = [
     placeholder: "Fan Speed Control Type",
   },
   {
-    label: "Link",
-    prop: "link",
-    type: "input",
-    class: "w-1/2",
-    placeholder: "Online Shopping Product URL",
-  },
-  {
     label: "Remark",
     prop: "remark",
     type: "input",
-    class: "w-1/2",
+    class: "w-full",
     placeholder: "Remark",
   },
 
@@ -550,6 +551,13 @@ const computerCase = [
     prefixIcon: Money,
   },
   {
+    label: "Link",
+    prop: "link",
+    type: "input",
+    class: "w-full",
+    placeholder: "Online Shopping Product URL",
+  },
+  {
     label: "Size",
     prop: "size",
     type: "select",
@@ -568,28 +576,19 @@ const computerCase = [
     ],
     placeholder: "Case Size",
   },
-
-  {
-    label: "Link",
-    prop: "link",
-    type: "input",
-    class: "w-1/2",
-    placeholder: "Online Shopping Product URL",
-  },
-
   {
     label: "Remark",
     prop: "remark",
     type: "input",
-    class: "w-1/2",
+    class: "w-full",
     placeholder: "Remark",
   },
 ];
 const other = [
-  { label: 'Model', prop: 'model', type:'input', class: 'w-5/6'},
+  { label: 'Model', prop: 'model', type:'input', class: 'w-2/3'},
   { label: 'Price', prop: 'price', type: 'number', class: 'w-1/6', prefixIcon: Money},
-  { label: 'link', prop: 'link', type:'input', class: 'w-5/6'},
   { label: 'Count', prop: 'count', type: 'count', class: 'w-1/6'},
+  { label: 'link', prop: 'link', type:'input', class: 'w-full'},
   { label: 'Remark', prop: 'remark', type: 'input', class: 'w-full'}
 ]
 const labels = {
