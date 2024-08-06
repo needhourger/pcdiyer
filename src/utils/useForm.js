@@ -27,7 +27,7 @@ const cpuForm = () => createForm({
 
 const memoryForm = () => createForm({
   generation: '',
-  speed: '',
+  speed: 0,
   capacity: 0,
   model: '',
   link: '',

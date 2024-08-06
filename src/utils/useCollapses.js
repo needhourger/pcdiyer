@@ -1,0 +1,123 @@
+import { useI18n } from "vue-i18n";
+import { markRaw } from "vue";
+import {
+  Menu,
+  Cpu,
+  Platform,
+  Ticket,
+  HelpFilled,
+  Orange,
+  Stopwatch,
+  Box,
+  Help,
+  Grid,
+} from "@element-plus/icons-vue";
+import {
+  motherboardForm,
+  cpuForm,
+  gpuForm,
+  memoryForm,
+  storageForm,
+  cpuCoolerForm,
+  fanForm,
+  powerForm,
+  caseForm,
+  otherForm,
+} from "./useForm";
+
+export default function () {
+  const { t } = useI18n()
+  const collapses = [
+    {
+      label: t("motherboard"),
+      icon: Menu,
+      prop: "motherboard",
+      labelsName: "motherboard",
+      formBase: motherboardForm,
+      isCollapse: true,
+      single: true,
+    },
+    {
+      label: t("cpu"),
+      icon: Cpu,
+      prop: "cpus",
+      labelsName: "cpu",
+      formBase: cpuForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("gpu"),
+      icon: Platform,
+      prop: "gpus",
+      labelsName: "gpu",
+      formBase: gpuForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("memory"),
+      icon: Ticket,
+      prop: "memorys",
+      labelsName: "memory",
+      formBase: memoryForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("storageDrive"),
+      icon: HelpFilled,
+      prop: "storages",
+      labelsName: "storage",
+      formBase: storageForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("cpuCooler"),
+      icon: Orange,
+      prop: "cpuCoolers",
+      labelsName: "cpuCooler",
+      formBase: cpuCoolerForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("fan"),
+      icon: Help,
+      prop: "fans",
+      labelsName: "fan",
+      formBase: fanForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("powerSupply"),
+      icon: Stopwatch,
+      prop: "powers",
+      labelsName: "power",
+      formBase: powerForm,
+      isCollapse: true,
+      single: false,
+    },
+    {
+      label: t("computerCase"),
+      icon: Box,
+      prop: "case",
+      labelsName: "computerCase",
+      formBase: caseForm,
+      isCollapse: true,
+      single: true,
+    },
+    {
+      label: t("other"),
+      icon: Grid,
+      prop: "others",
+      labelsName: "other",
+      formBase: otherForm,
+      isCollapse: true,
+      single: false,
+    },
+  ];
+  return markRaw(collapses);
+}
