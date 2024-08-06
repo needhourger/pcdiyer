@@ -1,6 +1,6 @@
 import { reactive } from "vue"
 
-const motherboardForm = {
+const motherboardForm = () => createForm({
   cpuType: '',
   socket: '',
   formFactor: '',
@@ -11,8 +11,9 @@ const motherboardForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const cpuForm = {
+})
+
+const cpuForm = () => createForm({
   cpuType: '',
   socket: '',
   generation: '',
@@ -22,8 +23,9 @@ const cpuForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const memoryForm = {
+})
+
+const memoryForm = () => createForm({
   generation: '',
   speed: '',
   capacity: 0,
@@ -33,8 +35,9 @@ const memoryForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const gpuForm = {
+})
+
+const gpuForm = () => createForm({
   gpuType: '',
   generation: '',
   model: '',
@@ -43,8 +46,9 @@ const gpuForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const storageForm = {
+})
+
+const storageForm = () => createForm({
   type: '',
   interface: '',
   protocol: '',
@@ -56,8 +60,9 @@ const storageForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const powerForm = {
+})
+
+const powerForm = () => createForm({
   size: '',
   type: '',
   power: 0,
@@ -67,8 +72,9 @@ const powerForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const caseForm = {
+})
+
+const caseForm = () => createForm({
   size: '',
   model: '',
   link: '',
@@ -76,8 +82,9 @@ const caseForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const cpuCoolerForm = {
+})
+
+const cpuCoolerForm = () => createForm({
   type: '',
   size: '',
   model: '',
@@ -86,8 +93,9 @@ const cpuCoolerForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const fanForm = {
+})
+
+const fanForm = () => createForm({
   size: '',
   light: '',
   control: '',
@@ -97,30 +105,37 @@ const fanForm = {
   remark: '',
   count: 1,
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
-}
-const otherForm = {
+})
+
+const otherForm = () => createForm({
   model: '',
   link: '',
   count: 1,
   price: 0,
   remark: '',
   option: { id: 'default', name: 'default', color: "#E5E7EB"},
+})
+
+function createForm(form) {
+  return reactive(form)
 }
+
 const diyForm = reactive({
-  motherboard: [motherboardForm],
-  cpus: [cpuForm],
-  memorys:[memoryForm],
-  gpus: [gpuForm],
-  storages:[storageForm],
-  cpuCoolers:[cpuCoolerForm],
-  powers:[powerForm],
-  fans:[fanForm],
-  case: [caseForm],
-  others: [otherForm],
+  motherboard: [motherboardForm()],
+  cpus: [cpuForm()],
+  memorys:[memoryForm()],
+  gpus: [gpuForm()],
+  storages:[storageForm()],
+  cpuCoolers:[cpuCoolerForm()],
+  powers:[powerForm()],
+  fans:[fanForm()],
+  case: [caseForm()],
+  others: [otherForm()],
   options: [{ id: 'default', name: 'default', color: "#E5E7EB"}],
 })
 
 export {
+  diyForm,
   motherboardForm,
   cpuForm,
   memoryForm,
@@ -129,7 +144,6 @@ export {
   storageForm,
   powerForm,
   caseForm,
-  diyForm,
   fanForm,
   otherForm,
 }

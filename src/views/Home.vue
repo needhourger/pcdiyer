@@ -32,12 +32,12 @@
                 <span class="w-16" :style="{ color: option.color + 'aa' }">{{ singlePrice(diyForm[collapse.prop], option.id) }} $</span>
               </template>
               <el-button class="m-1" text circle
-                @click.stop="handleAddForm(diyForm[collapse.prop], collapse.formBase)">
+                @click.stop="handleAddForm(diyForm[collapse.prop], collapse.formBase())">
                 <el-icon>
                   <CirclePlusFilled />
                 </el-icon>
               </el-button>
-              <el-button class="mr-3" @click.stop="handleAddOption(diyForm[collapse.prop], collapse.formBase)">
+              <el-button class="mr-3" @click.stop="handleAddOption(diyForm[collapse.prop], collapse.formBase())">
                 + Option
               </el-button>
             </div>
