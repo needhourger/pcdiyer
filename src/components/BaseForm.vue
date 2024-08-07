@@ -12,7 +12,7 @@
     <el-form label-position="top" inline :model="form" v-if="form">
       <FormItemsTemplate v-model="form" :formLabels="commonFormLabels"/>
       <el-collapse class="w-full mx-3">
-        <el-collapse-item title="Advance configurations">
+        <el-collapse-item :title="$t('advanceConfigurations')">
           <FormItemsTemplate v-model="form" :formLabels="advanceFormLabels"/>
         </el-collapse-item>
       </el-collapse>

@@ -1,7 +1,8 @@
 <template>
-  <div class="p-10">
-    <Header :forms="diyForm" @share="handleShare" v-model="currentOptionId" />
-    <el-collapse @change="handleCollapseChange">
+  <div class="">
+    <HeaderBar/>
+    <HeadComponent :forms="diyForm" @share="handleShare" v-model="currentOptionId" />
+    <el-collapse @change="handleCollapseChange" class="px-10">
       <el-collapse-item v-for="collapse, cindex in collapses" :key="cindex" :name="collapse.prop">
         <template #title>
           <div class="title">
@@ -39,8 +40,7 @@
                   <CirclePlusFilled />
                 </el-icon>
               </el-button>
-              <el-button class="mr-3" @click.stop="handleAddOption(diyForm[collapse.prop], collapse.formBase())"> +
-                Option </el-button>
+              <el-button class="mr-3" @click.stop="handleAddOption(diyForm[collapse.prop], collapse.formBase())">{{ $t('addOption') }}</el-button>
             </div>
           </div>
         </template>
@@ -65,7 +65,8 @@
 <script setup>
 import { CirclePlusFilled } from "@element-plus/icons-vue";
 import BaseForm from "../components/BaseForm.vue";
-import Header from '../components/Header.vue';
+import HeadComponent from '../components/HeadComponent.vue';
+import HeaderBar from "../components/HeaderBar.vue";
 import { diyForm } from "../utils/useForm.js";
 import { onMounted, reactive } from "vue";
 import { ref } from "vue"

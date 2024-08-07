@@ -324,7 +324,6 @@ function useFormLabels() {
       prop: "capacity",
       type: "number",
       class: "w-1/3",
-      placeholder: t('storageCapacityPlaceholder'),
     },
     {
       label: t('remark'),

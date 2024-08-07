@@ -38,8 +38,14 @@ const form = defineModel()
   margin: 0;
   margin-bottom: 0.5rem;
   padding: 0 0.5rem;
-  --el-form-label-font-size: 1.6rem;
+  --el-form-label-font-size: 1.4rem;
   --el-text-color-regular: #fff;
+  :deep(.el-form-item__label) {
+    height: 1.8rem;
+    line-height: 1.8rem;
+    align-items: center;
+    display: inline-flex;
+  }
 }
 
 .el-select {
