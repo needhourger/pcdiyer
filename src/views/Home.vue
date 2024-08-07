@@ -68,7 +68,7 @@ import BaseForm from "../components/BaseForm.vue";
 import HeadComponent from '../components/HeadComponent.vue';
 import HeaderBar from "../components/HeaderBar.vue";
 import { diyForm } from "../utils/useForm.js";
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import { ref } from "vue"
 import { Base64 } from "js-base64"
 import { copy2Clipboard, randomColorHex, singlePrice } from '../utils/utils.js'
@@ -138,7 +138,18 @@ const extractShareData = () => {
   const data = JSON.parse(decoded)
   Object.assign(diyForm, data)
 }
+const recoveryStorageForm = () => {
+  const formStr = sessionStorage.getItem("diyForm")
+  if (formStr) {
+    const form = JSON.parse(formStr)
+    Object.assign(diyForm, form)
+  }
+}
+watch(() => diyForm, (val) => {
+  sessionStorage.setItem("diyForm",JSON.stringify(val))
+},{ deep: true })
 onMounted(() => {
+  recoveryStorageForm()
   extractShareData()
 })
 </script>
