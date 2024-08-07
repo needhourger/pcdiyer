@@ -5,7 +5,11 @@ import NotFoundView from "../views/404.vue"
 const routes = [
   {
     path: '/',
-    component: HomeView
+    name: 'Home',
+    component: HomeView,
+    meta: {
+      keepAlive: true,
+    }
   },
   {
     path: '/:pathMatch(.*)*',
