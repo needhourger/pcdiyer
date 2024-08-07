@@ -1,7 +1,12 @@
 <template>
   <div class="w-full h-10 py-3 px-10 flex items-center justify-end">
+    <el-tooltip effect="dark" :content="$t('save2Image')">
+      <el-button size="large" class="w-8" text @click="save2Image()">
+        <el-icon color="#FFF"><PictureRounded/></el-icon>
+      </el-button>
+    </el-tooltip>
     <el-tooltip effect="dark" :content="$t('share')">
-      <el-button type="primary" @click="handleShare" size="large" class="flex items-center w-8" text>
+      <el-button @click="handleShare" size="large" class="w-8" text>
         <el-icon color="#fff"><Share/></el-icon>
       </el-button>
     </el-tooltip>
@@ -21,17 +26,21 @@
       </div>
     </el-popover>
   </div>
+  <ImageTemplate :show="imageTemplateShow"/>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import i18nGlobal from '../i18n';
 import { useI18n } from 'vue-i18n';
-import { Share } from '@element-plus/icons-vue'
+import { Share, PictureRounded } from '@element-plus/icons-vue'
 import { diyForm } from '../utils/useForm';
-import { copy2Clipboard } from '../utils/utils';
+import { copy2Clipboard, createDownload } from '../utils/utils';
 import { Base64 } from "js-base64"
+import html2canvas from 'html2canvas';
+import ImageTemplate from './ImageTemplate.vue';
 
+const imageTemplateShow = ref(false)
 const { locale } = useI18n()
 const languages = computed(() => {
   return i18nGlobal.global.availableLocales
@@ -48,6 +57,23 @@ const handleShare = () => {
   setTimeout(async () => {
     await copy2Clipboard(shareUrl)
   }, 100);
+}
+
+const save2Image = () => {
+  imageTemplateShow.value = true
+  nextTick(() => {
+    const element = document.getElementById("imagePreview")
+    html2canvas(element).then(canvas => {
+      const imageURL = canvas.toDataURL('image/png')
+      const downloadTime = new Date()
+      const imageName = `pcdiyer-${downloadTime.toUTCString()}.png`
+      createDownload(imageURL,imageName)
+    }).finally(() => {
+      setTimeout(() => {
+        imageTemplateShow.value = false
+      }, 1500);
+    })
+  })
 }
 </script>
 

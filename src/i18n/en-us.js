@@ -1,4 +1,7 @@
 const en_us = {
+  generatedTime: 'Configuration generated at',
+  component: 'Component',
+  configuration: 'Configuration',
   removeDefaultWarning: 'Default configurations could not be removed!',
   save2Image: 'Save current profile to Image',
   language: 'Language',

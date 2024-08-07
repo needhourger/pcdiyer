@@ -1,4 +1,7 @@
 const zh_cn = {
+  generatedTime: '配置生成时间',
+  component: '组件',
+  configuration: '配置参数',
   removeDefaultWarning: '默认配置无法移除哦~',
   save2Image: '将当前配置(默认配置)保存为图片',
   language: '语言',

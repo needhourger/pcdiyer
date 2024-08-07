@@ -51,3 +51,18 @@ export const singlePrice = (target, optionId = 'default') => {
   })
   return price
 }
+
+export const getCurrentLocalTimeString = () => {
+  const now = new Date();
+  const formattedDatetime = now.toLocaleString();
+  return formattedDatetime;
+}
+
+export const createDownload = (url, filename) => {
+  const link = document.createElement('a')
+  link.href = url
+  link.download = filename
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
