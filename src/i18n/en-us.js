@@ -1,4 +1,5 @@
-const en = {
+const en_us = {
+  language: 'Language',
   advanceConfigurations: "Advance Configurations",
   all: "All",
   share: "Share",
@@ -80,4 +81,4 @@ const en = {
   other: "Other",
 };
 
-export default en;
+export default en_us;

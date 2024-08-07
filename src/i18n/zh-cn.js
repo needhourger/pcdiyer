@@ -1,4 +1,5 @@
 const zh_cn = {
+  language: '语言',
   advanceConfigurations: "进阶参数配置",
   all: "All",
   share: "分享",
