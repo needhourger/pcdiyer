@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <HeaderBar/>
-    <HeadComponent :forms="diyForm" @share="handleShare" v-model="currentOptionId" />
+    <HeadComponent :forms="diyForm" v-model="currentOptionId" />
     <el-collapse @change="handleCollapseChange" class="px-10">
       <el-collapse-item v-for="collapse, cindex in collapses" :key="cindex" :name="collapse.prop">
         <template #title>
@@ -71,7 +71,7 @@ import { diyForm } from "../utils/useForm.js";
 import { onMounted, reactive, watch } from "vue";
 import { ref } from "vue"
 import { Base64 } from "js-base64"
-import { copy2Clipboard, randomColorHex, singlePrice } from '../utils/utils.js'
+import { randomColorHex, singlePrice } from '../utils/utils.js'
 import { useRoute } from "vue-router";
 import { v4 } from "uuid"
 import useCollapses from "../utils/useCollapses.js";
@@ -123,14 +123,7 @@ const handleCollapseChange = (activeNames) => {
     }
   }
 }
-const handleShare = () => {
-  const b64 = Base64.encodeURL(JSON.stringify(diyForm, null, 0))
-  const baseUrl = window.location.href
-  const shareUrl = `${baseUrl}?catalog=${b64}`
-  setTimeout(async () => {
-    await copy2Clipboard(shareUrl)
-  }, 100);
-}
+
 const extractShareData = () => {
   const b64 = route.query.catalog || null
   if (!b64) return

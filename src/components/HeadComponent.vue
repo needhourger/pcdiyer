@@ -7,10 +7,6 @@
           <el-option label="ALL" value="all"></el-option>
           <el-option v-for="option,i in options" :key="i" :label="option.name" :value="option.id"></el-option>
         </el-select>
-        <el-button type="primary" @click="emits('share')" size="large" class="flex items-center">
-          <span>{{ $t('share') }}</span>
-          <el-icon class="ml-2"><Share/></el-icon>
-        </el-button>
       </div>
       <div class="w-full text-end mt-4">
         <div v-for="option, oindex in options" :style="{ color: option.color }">
@@ -23,9 +19,7 @@
 <script setup>
 import { computed } from 'vue';
 import { singlePrice } from '../utils/utils.js'
-import { Share } from '@element-plus/icons-vue'
-
-const emits = defineEmits(["share", "update:option"])
+const emits = defineEmits(["update:option"])
 const props = defineProps({
   forms: { type: Object, default: () => ({}) },
 })
