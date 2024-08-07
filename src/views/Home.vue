@@ -67,19 +67,20 @@ import { CirclePlusFilled } from "@element-plus/icons-vue";
 import BaseForm from "../components/BaseForm.vue";
 import HeadComponent from '../components/HeadComponent.vue';
 import HeaderBar from "../components/HeaderBar.vue";
-import { diyForm } from "../utils/useForm.js";
+import { diyForm,currentOptionId } from "../utils/useForm.js";
 import { onMounted, reactive, watch } from "vue";
-import { ref } from "vue"
 import { Base64 } from "js-base64"
 import { randomColorHex, singlePrice } from '../utils/utils.js'
 import { useRoute } from "vue-router";
 import { v4 } from "uuid"
 import useCollapses from "../utils/useCollapses.js";
 import useFormLabels from "../utils/useFormLabels.js";
+import { ElMessage } from "element-plus";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n()
 const labels = useFormLabels()
 const collapses = useCollapses()
-const currentOptionId = ref('all')
 const route = useRoute()
 const handleAddOption = (forms, form) => {
   const optionId = v4()
@@ -95,22 +96,25 @@ const handleAddForm = (forms, form) => {
   const optionId = currentOptionId.value === 'all' ? 'default' : currentOptionId.value
   const color = diyForm.options.find(v => v.id === optionId).color
   forms.push(reactive({ ...form, option: { id: optionId, color: color } }));
+  currentOptionId.value = 'all'
 };
 const handleRemove = (forms, index) => {
   const removedOptionId = forms[index].option.id
+  if (removedOptionId === 'default' && removedOptionId !== 'all') {
+    ElMessage.warning(t('removeDefaultWarning'))
+    return
+  }
   forms.splice(index, 1);
-  if (removedOptionId !== 'default') {
-    let options = 0
-    for (const key in diyForm) {
-      for (const form in diyForm[key]) {
-        if (form.option.id === removedOptionId) {
-          options++
-        }
+  let options = 0
+  for (const key in diyForm) {
+    for (const form in diyForm[key]) {
+      if (form.option && form.option.id === removedOptionId) {
+        options++
       }
     }
-    if (options === 0) {
-      diyForm.options = diyForm.options.filter(v => v.id !== removedOptionId)
-    }
+  }
+  if (options === 0) {
+    diyForm.options = diyForm.options.filter(v => v.id !== removedOptionId)
   }
 };
 

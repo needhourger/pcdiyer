@@ -1,4 +1,4 @@
-import { reactive } from "vue"
+import { reactive, ref } from "vue"
 
 const motherboardForm = () => createForm({
   cpuType: '',
@@ -120,6 +120,8 @@ function createForm(form) {
   return reactive(form)
 }
 
+const currentOptionId = ref('default')
+
 const diyForm = reactive({
   motherboard: [motherboardForm()],
   cpus: [cpuForm()],
@@ -136,6 +138,7 @@ const diyForm = reactive({
 
 export {
   diyForm,
+  currentOptionId,
   motherboardForm,
   cpuForm,
   memoryForm,
