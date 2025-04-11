@@ -1,3 +1,4 @@
+"use client";
 import { Doto } from "next/font/google";
 
 const dotoPixel = Doto({
@@ -12,10 +13,43 @@ export default function NavBar() {
       <div
         className={
           dotoPixel.className +
-          " text-white text-6xl px-3 py-1 border-2 border-gray-400 shadow-gray-500 shadow-sm bg-black"
+          " text-white text-6xl px-3 py-1 border-2 border-gray-400 bg-black animate-breathing"
         }>
         PC-DIYER
       </div>
+      <style jsx>{`
+        @keyframes breathing {
+          0% {
+            text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ff00ff,
+              0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff,
+              0 0 35px #ff00ff09;
+          }
+          25% {
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ff00ff,
+              0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff,
+              0 0 70px #ff00ff;
+          }
+          50% {
+            text-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 45px #ff00ff,
+              0 0 60px #ff00ff, 0 0 75px #ff00ff, 0 0 90px #ff00ff,
+              0 0 105px #ff00ff;
+          }
+          75% {
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ff00ff,
+              0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff,
+              0 0 70px #ff00ff;
+          }
+          100% {
+            text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ff00ff,
+              0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff,
+              0 0 35px #ff00ff09;
+          }
+        }
+
+        .animate-breathing {
+          animation: breathing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+      `}</style>
     </div>
   );
 }
