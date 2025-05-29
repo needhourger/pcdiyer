@@ -9,7 +9,7 @@ const dotoPixel = Doto({
 
 export default function NavBar() {
   return (
-    <div className="w-full flex items-center justify-center px-6 py-4 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_80%_at_50%_50%,#000_90%,transparent_100%)]">
+    <div className="w-full flex items-center justify-center px-6 py-4 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:12px_12px] [mask-image:radial-gradient(ellipse_50%_90%_at_50%_50%,#000_70%,transparent_100%)]">
       <div
         className={
           dotoPixel.className +
