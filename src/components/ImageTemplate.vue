@@ -16,7 +16,7 @@
         </div>
         <div class="flex items-center justify-between">
           <a class="text-3xl font-bold" style="margin-block: 1rem;" href="">https://pcdiyer.yuukisama.cc/</a>
-          <div>{{ `${$t('totalPrice')}:${totalPrice()}` }}</div>
+          <div class="text-3xl font-bold">{{ `${$t('totalPrice')}: ${totalPrice()}` }}</div>
         </div>
         <table class="w-full conf-table">
           <thead v-if="currentForm" :data="data" border size="large" stripe style="width: 100%;">
