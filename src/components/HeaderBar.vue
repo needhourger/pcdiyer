@@ -11,7 +11,7 @@
     </div>
     <div>
       <el-tooltip effect="dark" :content="$t('save2Image')">
-        <el-button size="large" class="w-8" text @click="save2Image">
+        <el-button size="large" class="w-8" text @click="imageTemplateShow = true">
           <el-icon color="#FFF">
             <PictureRounded />
           </el-icon>
@@ -39,7 +39,7 @@
       </el-popover>
     </div>
   </div>
-  <ImageTemplate :show="imageTemplateShow" />
+  <ImageTemplate v-model:show="imageTemplateShow" />
 </template>
 <script setup>
 import { computed, nextTick, ref } from 'vue';
@@ -47,9 +47,8 @@ import i18nGlobal from '../i18n';
 import { useI18n } from 'vue-i18n';
 import { Share, PictureRounded } from '@element-plus/icons-vue'
 import { diyForm } from '../utils/useForm';
-import { copy2Clipboard, createDownload } from '../utils/utils';
+import { copy2Clipboard } from '../utils/utils';
 import { Base64 } from "js-base64"
-import html2canvas from 'html2canvas';
 import ImageTemplate from './ImageTemplate.vue';
 
 const imageTemplateShow = ref(false)
@@ -69,23 +68,6 @@ const handleShare = () => {
   setTimeout(async () => {
     await copy2Clipboard(shareUrl)
   }, 100);
-}
-
-const save2Image = () => {
-  imageTemplateShow.value = true
-  nextTick(() => {
-    const element = document.getElementById("imagePreview")
-    html2canvas(element).then(canvas => {
-      const imageURL = canvas.toDataURL('image/png')
-      const downloadTime = new Date()
-      const imageName = `pcdiyer-${downloadTime.toUTCString()}.png`
-      createDownload(imageURL, imageName)
-    }).finally(() => {
-      setTimeout(() => {
-        imageTemplateShow.value = false
-      }, 1500);
-    })
-  })
 }
 
 const redirect2Github = () => {

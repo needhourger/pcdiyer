@@ -4,6 +4,7 @@ const zh_cn = {
   configuration: '配置参数',
   removeDefaultWarning: '默认配置无法移除哦~',
   save2Image: '将当前配置(默认配置)保存为图片',
+  save: '保存',
   language: '语言',
   advanceConfigurations: "进阶参数配置",
   all: "All",
