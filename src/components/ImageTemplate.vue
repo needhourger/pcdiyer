@@ -90,6 +90,7 @@ const handleSave = () => {
   th {
     border: 2px solid #fff;
     font-weight: normal;
+    text-align: center;
   }
 
   tr {
