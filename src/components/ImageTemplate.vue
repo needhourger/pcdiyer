@@ -62,7 +62,6 @@ const getComponentLabel = (props) => {
 const data = computed(() => {
   if (currentForm) {
     const ret = []
-    console.log(currentForm.value);
     for (const key in currentForm.value) {
       ret.push({ ...currentForm.value[key], label: getComponentLabel(key) })
     }
