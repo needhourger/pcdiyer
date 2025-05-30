@@ -39,7 +39,7 @@
       </el-popover>
     </div>
   </div>
-  <ImageTemplate v-model:show="imageTemplateShow" />
+  <ImageTemplate v-model:show="imageTemplateShow"/>
 </template>
 <script setup>
 import { computed, nextTick, ref } from 'vue';

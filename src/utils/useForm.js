@@ -136,15 +136,18 @@ const currentForm = computed(() => {
   const form = {};
   const optionId =
     currentOptionId.value === "all" ? "default" : currentOptionId.value;
+  console.log(optionId);
 
   for (const key in diyForm) {
     form[key] = extractSingleForm(diyForm[key], optionId)
   }
+  console.log(form);
   return form;
 });
 
 function extractSingleForm(forms, optionId) {
-  for (const form in forms) {
+  for (const form of forms) {
+    console.log(form);
     if (form.option && form.option.id === optionId) {
       return form
     }

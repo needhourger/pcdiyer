@@ -1,34 +1,40 @@
 <template>
   <transition name="el-fade-in-linear">
-    <div v-show="show" id="imagePreview"
-      class="fixed z-10 left-0 right-0 top-0 h-screen w-screen p-10 bg-gradient-to-b from-black via-purple-950 to-pink-400 backdrop-filter backdrop-blur-lg">
+    <div v-show="show"
+      class="fixed z-10 left-0 right-0 top-0 h-screen w-screen p-10 bg-black">
       <div class="flex items-center justify-end">
         <el-button @click="handleSave">{{ $t('save') }}</el-button>
+        <el-button @click="show = false">{{ $t('close') }}</el-button>
       </div>
-      <div class="flex items-center justify-between">
-        <div class="text-8xl font-bold">PC-DIYer</div>
-        <div class="">
-          <span>{{ $t('generatedTime') }} :</span>
-          <span class="text-2xl ml-1 font-bold">{{ getCurrentLocalTimeString() }}</span>
+      <div id="imagePreview" class="bg-gradient-to-b from-black via-purple-950 to-pink-400 backdrop-filter backdrop-blur-lg">
+        <div class="flex items-center justify-between">
+          <div class="text-8xl font-bold">PC-DIYer</div>
+          <div class="">
+            <span>{{ $t('generatedTime') }} :</span>
+            <span class="text-2xl ml-1 font-bold">{{ getCurrentLocalTimeString() }}</span>
+          </div>
         </div>
+        <div class="flex items-center justify-between">
+          <a class="text-3xl font-bold" style="margin-block: 1rem;" href="">https://pcdiyer.yuukisama.cc/</a>
+          <div>{{ `${$t('totalPrice')}:${totalPrice()}` }}</div>
+        </div>
+        <table class="w-full conf-table">
+          <thead v-if="currentForm" :data="data" border size="large" stripe style="width: 100%;">
+            <th prop="label" width="200">{{ $t('component') }}</th>
+            <th prop="model">{{ $t('configuration') }}</th>
+            <th prop="price" width="150">{{ $t('price') }}</th>
+            <th prop="remark" width="400">{{ $t('remark') }}</th>
+          </thead>
+          <tbody>
+            <tr v-for="row, rindex in data" :key="rindex">
+              <td>{{ row['label'] }}</td>
+              <td>{{ row['model'] }}</td>
+              <td>{{ row['price'] }}</td>
+              <td>{{ row['remark'] }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <a class="text-3xl font-bold" style="margin-block: 1rem;" href="">https://pcdiyer.yuukisama.cc/</a>
-      <table class="w-full conf-table">
-        <thead v-if="currentForm" :data="data" border size="large" stripe style="width: 100%;">
-          <th prop="label" width="200">{{ $t('component') }}</th>
-          <th prop="model">{{ $t('configuration') }}</th>
-          <th prop="price" width="150">{{ $t('price') }}</th>
-          <th prop="remark" width="400">{{ $t('remark') }}</th>
-        </thead>
-        <tbody>
-          <tr v-for="row, rindex in data" :key="rindex">
-            <td>{{ row['label'] }}</td>
-            <td>{{ row['model'] }}</td>
-            <td>{{ row['price'] }}</td>
-            <td>{{ row['remark'] }}</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </transition>
 </template>
@@ -39,11 +45,12 @@ import { computed } from 'vue';
 import { getCurrentLocalTimeString } from '../utils/utils';
 import html2canvas from 'html2canvas';
 import { createDownload } from '../utils/utils';
-
+import { totalPrice } from '../utils/utils';
 const show = defineModel('show', {
   type: Boolean,
   default: false
 })
+
 const formLayout = useCollapses()
 const getComponentLabel = (props) => {
   const item = formLayout.find(item => item.prop === props)
@@ -55,6 +62,7 @@ const getComponentLabel = (props) => {
 const data = computed(() => {
   if (currentForm) {
     const ret = []
+    console.log(currentForm.value);
     for (const key in currentForm.value) {
       ret.push({ ...currentForm.value[key], label: getComponentLabel(key) })
     }
