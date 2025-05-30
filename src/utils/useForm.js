@@ -140,11 +140,12 @@ const currentForm = computed(() => {
   for (const key in diyForm) {
     form[key] = extractSingleForm(diyForm[key], optionId)
   }
+  console.log(form);
   return form;
 });
 
 function extractSingleForm(forms, optionId) {
-  for (const form in forms) {
+  for (const form of forms) {
     if (form.option && form.option.id === optionId) {
       return form
     }

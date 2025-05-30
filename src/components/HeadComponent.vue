@@ -8,7 +8,7 @@
           <el-option v-for="option,i in options" :key="i" :label="option.name" :value="option.id"></el-option>
         </el-select>
       </div>
-      <div class="w-full text-end mt-4">
+      <div class="w-full text-end mt-4" v-if="props.forms">
         <div v-for="option, oindex in options" :style="{ color: option.color }">
           {{ option.id }} : {{ totalPrice(option.id) }} $
         </div>
@@ -18,7 +18,8 @@
 </template>
 <script setup>
 import { computed } from 'vue';
-import { singlePrice } from '../utils/utils.js'
+import { totalPrice } from '../utils/utils.js'
+import { currentOptionId } from '../utils/useForm.js';
 const emits = defineEmits(["update:option"])
 const props = defineProps({
   forms: { type: Object, default: () => ({}) },
@@ -26,15 +27,7 @@ const props = defineProps({
 const options = computed(() => {
   return props.forms.options
 })
-const currentOptionId = defineModel({ type: String, default: 'default' })
-const totalPrice = (oid = 'default') => {
-  let price = 0
-  for (const key in props.forms) {
-    if (key === 'options') continue
-    price += singlePrice(props.forms[key],oid)
-  }
-  return price
-}
+
 </script>
 <style lang="less" scoped>
 .el-select {

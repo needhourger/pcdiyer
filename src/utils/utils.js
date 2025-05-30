@@ -1,4 +1,5 @@
 import { ElMessage } from "element-plus"
+import { currentForm, currentOptionId } from "./useForm"
 
 export const copy2Clipboard = (text) => {
   if (!navigator.clipboard) {
@@ -49,6 +50,16 @@ export const singlePrice = (target, optionId = 'default') => {
   targetOption.forEach(i => {
     price += i.price * i.count
   })
+  return price
+}
+
+export const totalPrice = (optionId = undefined) => {
+  if (!optionId) optionId = currentOptionId.value
+  let price = 0
+  for (const key in currentForm) {
+    if (key === 'options') continue
+    price += singlePrice(currentForm[key],optionId)
+  }
   return price
 }
 
