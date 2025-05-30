@@ -4,6 +4,7 @@ const en_us = {
   configuration: 'Configuration',
   removeDefaultWarning: 'Default configurations could not be removed!',
   save2Image: 'Save current profile to Image',
+  save: 'Save',
   language: 'Language',
   advanceConfigurations: "Advance Configurations",
   all: "All",
